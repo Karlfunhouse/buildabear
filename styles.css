@@ -15,9 +15,14 @@ main {
   display: flex;
 }
 
+button {
+  padding: 1.5% 5%;
+}
+
 .flex-column {
   display: flex;
   flex-direction: column;
+  min-width: 300px;
 }
 
 .page-title {
@@ -41,6 +46,28 @@ main {
   width: 30%;
 }
 
+.saved-outfits h2 {
+  text-align: center;
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 10%;
+}
+
+.saved-outfits-container {
+  border: solid 1px black;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.saved-outfit-card {
+  border: solid 1px black;
+  display: flex;
+  justify-content: space-between;
+  padding: 2.5%;
+  margin: 5% 0;
+  font-size: 1.5em;
+}
+
 .bear-image {
   display: flex;
   justify-content: center;
@@ -48,6 +75,36 @@ main {
 }
 
 .bear-image img {
-  width: 75%;
+  width: 90%;
   border: solid 1px black;
+}
+
+.button-container {
+  border: solid 1px black;
+}
+
+.hat-options {
+  border: solid 1px black;
+}
+
+.clothes-options {
+  border: solid 1px black;
+}
+
+.accessories-options {
+  border: solid 1px black;
+}
+
+.background-options {
+  border: solid 1px black;
+}
+
+.outfit-card {
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 10%;
+}
+
+.outfit-card h2 {
+  margin-bottom: 2.5%;
 }
