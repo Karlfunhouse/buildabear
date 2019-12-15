@@ -6,12 +6,18 @@
 
 header {
   border: solid 1px black;
+  margin-bottom: 1%;
 }
 
 main {
   border: solid 4px black;
   width: 100%;
   display: flex;
+}
+
+.page-title {
+  text-align: center;
+  padding: 1%;
 }
 
 .outfit-options {
