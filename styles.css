@@ -1,3 +1,34 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 header {
+  border: solid 1px black;
+}
+
+main {
+  border: solid 4px black;
+  width: 100%;
+  display: flex;
+}
+
+.outfit-options {
+  border: solid 1px black;
+  width: 30%;
+}
+
+.bear-display {
+  border: solid 1px black;
+  flex-grow: 1;
+}
+
+.saved-outfits {
+  border: solid 1px black;
+  width: 30%;
+}
+
+.bear-image {
   border: solid 1px black;
 }
