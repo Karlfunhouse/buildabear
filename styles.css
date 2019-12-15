@@ -15,6 +15,11 @@ main {
   display: flex;
 }
 
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
 .page-title {
   text-align: center;
   padding: 1%;
@@ -27,6 +32,7 @@ main {
 
 .bear-display {
   border: solid 1px black;
+  align-items: center;
   flex-grow: 1;
 }
 
@@ -36,5 +42,12 @@ main {
 }
 
 .bear-image {
+  display: flex;
+  justify-content: center;
+  border: solid 1px black;
+}
+
+.bear-image img {
+  width: 75%;
   border: solid 1px black;
 }
