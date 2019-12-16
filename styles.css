@@ -8,13 +8,21 @@
 
 header {
   border: solid 1px black;
-  margin-bottom: 1%;
+  height: 10vh;
+  margin-bottom: 2.5vh;
+  min-height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 main {
   border: solid 4px black;
   width: 100%;
+  height: 87.5vh;
   display: flex;
+  overflow: scroll;
+  min-height: 600px;
 }
 
 button {
@@ -27,13 +35,6 @@ button {
   display: flex;
   flex-direction: column;
   min-width: 300px;
-}
-
-/* Header styling */
-
-.page-title {
-  text-align: center;
-  padding: 1%;
 }
 
 /* Left column styling (outfits) */
