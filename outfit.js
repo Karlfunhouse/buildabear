@@ -15,5 +15,3 @@ class Outfit {
     this.garments = this.garments.splice(removeGarment);
   }
 }
-
-module.exports = Outfit
