@@ -3,14 +3,15 @@
   <head>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css?family=Maiden+Orange|Overpass|Sanchez&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/140c3ff74c.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <header>
-      <h1>Build a Bear</h1>
+      <h1 class="page-title">Build a Bear</h1>
     </header>
     <main>
-      <section class="outfit-options">
-        <section class="hat-options">
+      <section class="outfit-options flex-column">
+        <section class="hat-options outfit-card">
           <h2>Hats</h2>
           <div class="button-container">
             <button>Top Hat</button>
@@ -19,7 +20,7 @@
             <button>Crown</button>
           </div>
         </section>
-        <section class="clothes-options">
+        <section class="clothes-options outfit-card">
           <h2>Clothes</h2>
           <div class="button-container">
             <button>T-Shirt</button>
@@ -27,7 +28,7 @@
             <button>Tuxedo</button>
           </div>
         </section>
-        <section class="accessories-options">
+        <section class="accessories-options outfit-card">
           <h2>Accessories</h2>
           <div class="button-container">
             <button>Necklace</button>
@@ -37,7 +38,7 @@
             <button>Earrings</button>
           </div>
         </section>
-        <section class="background-options">
+        <section class="background-options outfit-card">
           <h2>Backgrounds</h2>
           <div class="button-container">
             <button>Blue</button>
@@ -49,22 +50,31 @@
           </div>
         </section>
       </section>
-      <section class="bear-display">
+      <section class="bear-display flex-column">
         <section class="bear-image">
+          <img src="./assets/bear.png">
         </section>
         <input type="text" class="outfit-name-input">
         <button type="submit" class="save-outfit">SAVE</button>
       </section>
-      <section class="saved-outfits">
+      <section class="saved-outfits flex-column">
         <h2>Saved Outfits</h2>
         <div class="saved-outfits-container">
           <div class="saved-outfit-card">
+            <p>Fancy</p>
+            <i class="fas fa-times"></i>
           </div>
           <div class="saved-outfit-card">
+            <p>A day out</p>
+            <i class="fas fa-times"></i>
           </div>
           <div class="saved-outfit-card">
+            <p>Beach time</p>
+            <i class="fas fa-times"></i>
           </div>
           <div class="saved-outfit-card">
+            <p>Mars prom</p>
+            <i class="fas fa-times"></i>
           </div>
         </div>
       </section>

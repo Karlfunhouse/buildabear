@@ -1,0 +1,123 @@
+/* Global document styles */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  border: solid 1px black;
+  height: 10vh;
+  margin-bottom: 2.5vh;
+  min-height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  border: solid 4px black;
+  width: 100%;
+  height: 87.5vh;
+  display: flex;
+  overflow: scroll;
+  min-height: 600px;
+}
+
+button {
+  padding: 1.5% 5%;
+}
+
+/* Global classes for re-use  */
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+
+/* Left column styling (outfits) */
+
+.outfit-options {
+  border: solid 1px black;
+  width: 30%;
+}
+
+.hat-options {
+  border: solid 1px black;
+}
+
+.clothes-options {
+  border: solid 1px black;
+}
+
+.accessories-options {
+  border: solid 1px black;
+}
+
+.background-options {
+  border: solid 1px black;
+}
+
+.button-container {
+  border: solid 1px black;
+}
+
+/* Middle column styling (bear display) */
+
+.bear-display {
+  border: solid 1px black;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.bear-image {
+  display: flex;
+  justify-content: center;
+  border: solid 1px black;
+}
+
+.bear-image img {
+  width: 90%;
+  border: solid 1px black;
+}
+
+/* Right column display (Saved outfits) */
+
+.saved-outfits {
+  border: solid 1px black;
+  width: 30%;
+}
+
+.saved-outfits h2 {
+  text-align: center;
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 10%;
+}
+
+.saved-outfits-container {
+  border: solid 1px black;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.saved-outfit-card {
+  border: solid 1px black;
+  display: flex;
+  justify-content: space-between;
+  padding: 2.5%;
+  margin: 5% 0;
+  font-size: 1.5em;
+}
+
+.outfit-card {
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 10%;
+}
+
+.outfit-card h2 {
+  margin-bottom: 2.5%;
+}
