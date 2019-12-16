@@ -39,6 +39,7 @@ main {
 
 button {
   padding: 1.5% 5%;
+  margin: .5%;
   font-size: 1em;
   border-radius: 3px;
   font-family: overpass;
