@@ -14,18 +14,19 @@ p {
   font-family: overpass;
 }
 
-header {
-  border: solid 1px black;
-  height: 10vh;
+header {  height: 10vh;
   margin-bottom: 2.5vh;
   min-height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #73412f;
+  color: white;
 }
 
 main {
   border: solid 4px black;
+  background-color: #f2f2e9;
   width: 100%;
   height: 87.5vh;
   display: flex;
@@ -35,7 +36,21 @@ main {
 
 button {
   padding: 1.5% 5%;
+  font-size: 1em;
+  border-radius: 3px;
   font-family: overpass;
+  background-color: #d6644b;
+  color: white;
+  outline: none;
+}
+
+button:hover {
+  background-color: #f29f05;
+  background-color: #B44127;
+}
+
+.button-active-js {
+  background-color: #f29f05
 }
 
 /* Global classes for re-use  */
@@ -100,6 +115,11 @@ button {
   border: solid 1px black;
 }
 
+.save-outfit {
+  background-color: #57aec1;
+  color: white;
+}
+
 /* Right column display (Saved outfits) */
 
 .saved-outfits {
@@ -115,13 +135,15 @@ button {
 }
 
 .saved-outfits-container {
-  border: solid 1px black;
   width: 90%;
   margin: 0 auto;
 }
 
 .saved-outfit-card {
-  border: solid 1px black;
+  background-color: #B37C45;
+  background-color: WHITE;
+  border: 1px solid #73412f;
+  border-radius: 3px;
   display: flex;
   justify-content: space-between;
   padding: 2.5%;
