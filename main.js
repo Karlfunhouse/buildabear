@@ -33,14 +33,16 @@ function selectClothes() {
 }
 
 function selectAccessories() {
-  if (event.target.classList.contains('top-hat-js')) {
-    console.log('tophat');
-  } else if (event.target.classList.contains('sun-hat-js')) {
-    console.log('sunhat');
-  } else if (event.target.classList.contains('bow-js')) {
-    console.log('bow');
-  } else if (event.target.classList.contains('crown-js')) {
-    console.log('crown');
+  if (event.target.classList.contains('necklace-js')) {
+    console.log('necklace');
+  } else if (event.target.classList.contains('bowtie-js')) {
+    console.log('bowtie');
+  } else if (event.target.classList.contains('watch-js')) {
+    console.log('watch');
+  } else if (event.target.classList.contains('space-helmet-js')) {
+    console.log('space-helmet');
+  } else if (event.target.classList.contains('earrings-js')) {
+    console.log('earrings');
   }
 }
 
