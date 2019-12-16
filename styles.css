@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: #f2f2e9;
+}
+
 h2 {
   font-family: sanchez;
 }
@@ -25,7 +29,6 @@ header {  height: 10vh;
 }
 
 main {
-  border: solid 4px black;
   background-color: #f2f2e9;
   width: 100%;
   height: 87.5vh;
@@ -72,34 +75,27 @@ button:hover {
 /* Left column styling (outfits) */
 
 .outfit-options {
-  border: solid 1px black;
   width: 30%;
 }
 
 .hat-options {
-  border: solid 1px black;
 }
 
 .clothes-options {
-  border: solid 1px black;
 }
 
 .accessories-options {
-  border: solid 1px black;
 }
 
 .background-options {
-  border: solid 1px black;
 }
 
 .button-container {
-  border: solid 1px black;
 }
 
 /* Middle column styling (bear display) */
 
 .bear-display {
-  border: solid 1px black;
   align-items: center;
   flex-grow: 1;
 }
@@ -107,12 +103,18 @@ button:hover {
 .bear-image {
   display: flex;
   justify-content: center;
-  border: solid 1px black;
 }
 
 .bear-image img {
-  width: 90%;
-  border: solid 1px black;
+  width: 80%;
+
+}
+
+.outfit-name-input {
+  font-size: 1em;
+  width: 65%;
+  padding: 1%;
+  margin: 2.5% 0;
 }
 
 .save-outfit {
@@ -123,7 +125,6 @@ button:hover {
 /* Right column display (Saved outfits) */
 
 .saved-outfits {
-  border: solid 1px black;
   width: 30%;
 }
 
