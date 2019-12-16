@@ -47,13 +47,15 @@ function selectAccessories() {
 }
 
 function selectBackground() {
-  if (event.target.classList.contains('top-hat-js')) {
-    console.log('tophat');
-  } else if (event.target.classList.contains('sun-hat-js')) {
-    console.log('sunhat');
-  } else if (event.target.classList.contains('bow-js')) {
-    console.log('bow');
-  } else if (event.target.classList.contains('crown-js')) {
-    console.log('crown');
+  if (event.target.classList.contains('sky-js')) {
+    console.log('sky');
+  } else if (event.target.classList.contains('sunset-js')) {
+    console.log('sunset');
+  } else if (event.target.classList.contains('park-js')) {
+    console.log('park');
+  } else if (event.target.classList.contains('beach-js')) {
+    console.log('beach');
+  } else if (event.target.classList.contains('space-js')) {
+    console.log('space');
   }
 };
