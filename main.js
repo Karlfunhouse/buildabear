@@ -1,9 +1,8 @@
 var newOutfit = new Outfit(null, null, [], null);
-var hatOptions = document.querySelector('.hat-options-js');
-var clothesOptions = document.querySelector('.clothes-options-js');
-var accessoriesOptions = document.querySelector('.accessories-options-js');
-var backgroundOptions = document.querySelector('.background-options-js');
-console.log(newOutfit);
+var hatOptions = document.querySelector('.hat-button-container-js');
+var clothesOptions = document.querySelector('.clothes-button-container-js');
+var accessoriesOptions = document.querySelector('.accessories-button-container-js');
+var backgroundOptions = document.querySelector('.background-button-container-js');
 
 hatOptions.addEventListener('click', selectHat);
 clothesOptions.addEventListener('click', selectClothes);
@@ -21,21 +20,17 @@ function removeActiveItem(item) {
 }
 
 function selectHat() {
-  var activeHat = hatOptions.querySelector('.active-item');
-  removeActiveItem(activeHat);
-  newOutfit.removeGarment(activeHat);
-  if (event.target.classList.contains('top-hat-js')) {
-    newOutfit.addGarment('top-hat');
+  if (event.target != event.currentTarget && !event.target.classList.contains('active-item')) {
+    var activeHat = hatOptions.querySelector('.active-item');
+    removeActiveItem(activeHat);
     addActiveItem(event.target);
-  } else if (event.target.classList.contains('sun-hat-js')) {
-    newOutfit.addGarment('sun-hat');
-    addActiveItem(event.target);
-  } else if (event.target.classList.contains('bow-js')) {
-    newOutfit.addGarment('bow');
-    addActiveItem(event.target);
-  } else if (event.target.classList.contains('crown-js')) {
-    newOutfit.addGarment('crown');
-    addActiveItem(event.target);
+    if (activeHat != null) {
+      newOutfit.removeGarment(activeHat.value);
+    }
+    newOutfit.addGarment(event.target.value);
+  } else {
+    event.target.classList.remove('active-item');
+    newOutfit.removeGarment(event.target.value);
   }
 }
 
