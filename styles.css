@@ -94,6 +94,10 @@ button:hover {
 .button-container {
 }
 
+.active-item {
+  background-color: blue;
+}
+
 /* Middle column styling (bear display) */
 
 .bear-display {
