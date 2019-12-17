@@ -21,10 +21,9 @@ function removeActiveItem(item) {
 }
 
 function selectHat() {
-  var activeItem = document.querySelector('.active-item');
-  console.log(activeItem);
-  removeActiveItem(activeItem);
-  newOutfit.removeGarment(activeItem);
+  var activeHat = hatOptions.querySelector('.active-item');
+  removeActiveItem(activeHat);
+  newOutfit.removeGarment(activeHat);
   if (event.target.classList.contains('top-hat-js')) {
     newOutfit.addGarment('top-hat');
     addActiveItem(event.target);
@@ -41,12 +40,18 @@ function selectHat() {
 }
 
 function selectClothes() {
+  var activeClothes = clothesOptions.querySelector('.active-item');
+  removeActiveItem(activeClothes);
+  newOutfit.removeGarment(activeClothes);
   if (event.target.classList.contains('vest-js')) {
-    console.log('vest');
+    newOutfit.addGarment('vest');
+    addActiveItem(event.target);
   } else if (event.target.classList.contains('dress-js')) {
-    console.log('dress');
+    newOutfit.addGarment('dress');
+    addActiveItem(event.target);
   } else if (event.target.classList.contains('tuxedo-js')) {
-    console.log('tuxedo');
+    newOutfit.addGarment('tuxedo');
+    addActiveItem(event.target);
   }
 }
 
