@@ -4,6 +4,7 @@ var clothesOptions = document.querySelector('.clothes-button-container-js');
 var accessoriesOptions = document.querySelector('.accessories-button-container-js');
 var backgroundOptions = document.querySelector('.background-button-container-js');
 
+
 hatOptions.addEventListener('click', selectHat);
 clothesOptions.addEventListener('click', selectClothes);
 accessoriesOptions.addEventListener('click', selectAccessories);
@@ -18,6 +19,17 @@ function removeActiveItem(item) {
     item.classList.remove('active-item');
   }
 }
+
+function displayImage(imageType, imageId) {
+  var imageTypeArray = document.querySelectorAll(`.image-${imageType}`);
+    for (var i = 0; i < imageTypeArray.length; i++) {
+      if (imageId == imageTypeArray[i].id) {
+        console.log('woof');
+      }
+    }
+}
+
+displayImage('hats', 'top-hat');
 
 function selectHat() {
   if (event.target != event.currentTarget && !event.target.classList.contains('active-item')) {
