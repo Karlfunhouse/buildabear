@@ -48,21 +48,6 @@ function selectClothes() {
     newOutfit.removeGarment(event.target.value);
   }
 }
-// function selectClothes() {
-//   var activeClothes = clothesOptions.querySelector('.active-item');
-//   removeActiveItem(activeClothes);
-//   newOutfit.removeGarment(activeClothes);
-//   if (event.target.classList.contains('vest-js')) {
-//     newOutfit.addGarment('vest');
-//     addActiveItem(event.target);
-//   } else if (event.target.classList.contains('dress-js')) {
-//     newOutfit.addGarment('dress');
-//     addActiveItem(event.target);
-//   } else if (event.target.classList.contains('tuxedo-js')) {
-//     newOutfit.addGarment('tuxedo');
-//     addActiveItem(event.target);
-//   }
-// }
 
 function selectAccessories() {
   if (event.target != event.currentTarget && !event.target.classList.contains('active-item')) {

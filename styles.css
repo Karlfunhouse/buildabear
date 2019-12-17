@@ -48,10 +48,10 @@ button {
   outline: none;
 }
 
-button:hover {
+/* button:hover {
   background-color: #f29f05;
   background-color: #B44127;
-}
+} */
 
 .button-active-js {
   background-color: #f29f05
