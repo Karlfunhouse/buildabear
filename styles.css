@@ -119,7 +119,9 @@ button {
   width: 80%;
 }
 
-.image-items {
+.image-hats,
+.image-clothes,
+.image-accessories {
     z-index: 3;
 }
 
