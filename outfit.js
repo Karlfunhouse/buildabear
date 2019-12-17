@@ -7,11 +7,12 @@ class Outfit {
 
   }
 
-  addGarment(newGarment) {
-    this.garments = this.garments.push(newGarment);
+  addGarment(garment) {
+    this.garments.push(garment);
   }
 
-  removeGarment(removeGarment) {
-    this.garments = this.garments.splice(removeGarment);
+  removeGarment(garment) {
+    var removedItem = this.garments.indexOf(garment);
+    this.garments.splice(removedItem, 1);
   }
 }
