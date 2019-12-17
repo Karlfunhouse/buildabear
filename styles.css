@@ -103,6 +103,11 @@ button {
 .bear-display {
   align-items: center;
   flex-grow: 1;
+  position: relative;
+}
+
+.z-index {
+  z-index: 5;
 }
 
 .bear-image {
@@ -113,6 +118,10 @@ button {
 .bear-image img {
   width: 80%;
 
+}
+
+.image-absolute {
+  position: absolute;
 }
 
 .outfit-name-input {
