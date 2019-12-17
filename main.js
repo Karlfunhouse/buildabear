@@ -1,4 +1,4 @@
-var newOutfit = new Outfit(null, null, null, null);
+var newOutfit = new Outfit(null, null, [], null);
 var hatOptions = document.querySelector('.hat-options-js');
 var clothesOptions = document.querySelector('.clothes-options-js');
 var accessoriesOptions = document.querySelector('.accessories-options-js');
@@ -12,7 +12,8 @@ backgroundOptions.addEventListener('click', selectBackground);
 
 function selectHat() {
   if (event.target.classList.contains('top-hat-js')) {
-    console.log('tophat');
+    newOutfit.addGarment('top-hat');
+    console.log(newOutfit);
   } else if (event.target.classList.contains('sun-hat-js')) {
     console.log('sunhat');
   } else if (event.target.classList.contains('bow-js')) {
