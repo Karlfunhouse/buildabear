@@ -14,8 +14,16 @@ function addActiveItem(item) {
   item.classList.add('active-item');
 }
 
+function removeActiveItem(item) {
+  if (item != null) {
+    item.classList.remove('active-item');
+  }
+}
+
 function selectHat() {
   var activeItem = document.querySelector('.active-item');
+  console.log(activeItem);
+  removeActiveItem(activeItem);
   newOutfit.removeGarment(activeItem);
   if (event.target.classList.contains('top-hat-js')) {
     newOutfit.addGarment('top-hat');
