@@ -56,29 +56,45 @@ function selectClothes() {
 }
 
 function selectAccessories() {
+  var activeAccessories = accessoriesOptions.querySelector('.active-item');
+  removeActiveItem(activeAccessories);
+  newOutfit.removeGarment(activeAccessories);
   if (event.target.classList.contains('necklace-js')) {
-    console.log('necklace');
+    newOutfit.addGarment('necklace');
+    addActiveItem(event.target);
   } else if (event.target.classList.contains('bowtie-js')) {
-    console.log('bowtie');
+    newOutfit.addGarment('bowtie');
+    addActiveItem(event.target);
   } else if (event.target.classList.contains('watch-js')) {
-    console.log('watch');
+    newOutfit.addGarment('watch');
+    addActiveItem(event.target);
   } else if (event.target.classList.contains('space-helmet-js')) {
-    console.log('space-helmet');
+    newOutfit.addGarment('space-helmet');
+    addActiveItem(event.target);
   } else if (event.target.classList.contains('earrings-js')) {
-    console.log('earrings');
+    newOutfit.addGarment('earrings');
+    addActiveItem(event.target);
   }
 }
 
 function selectBackground() {
+  var activeBackground = backgroundOptions.querySelector('.active-item');
+  removeActiveItem(activeBackground);
+  newOutfit.removeGarment(activeBackground);
   if (event.target.classList.contains('sky-js')) {
-    console.log('sky');
+    newOutfit.addGarment('sky');
+    addActiveItem(event.target);
   } else if (event.target.classList.contains('sunset-js')) {
-    console.log('sunset');
+    newOutfit.addGarment('sunset');
+    addActiveItem(event.target);
   } else if (event.target.classList.contains('park-js')) {
-    console.log('park');
+    newOutfit.addGarment('park');
+    addActiveItem(event.target);
   } else if (event.target.classList.contains('beach-js')) {
-    console.log('beach');
+    newOutfit.addGarment('beach');
+    addActiveItem(event.target);
   } else if (event.target.classList.contains('space-js')) {
-    console.log('space');
+    newOutfit.addGarment('space');
+    addActiveItem(event.target);
   }
 };
