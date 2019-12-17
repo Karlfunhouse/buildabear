@@ -1,4 +1,4 @@
-var newOutfit = new Outfit(null, null, null, null);
+var newOutfit = new Outfit(null, null, [], null);
 var hatOptions = document.querySelector('.hat-options-js');
 var clothesOptions = document.querySelector('.clothes-options-js');
 var accessoriesOptions = document.querySelector('.accessories-options-js');
@@ -10,52 +10,91 @@ clothesOptions.addEventListener('click', selectClothes);
 accessoriesOptions.addEventListener('click', selectAccessories);
 backgroundOptions.addEventListener('click', selectBackground);
 
+function addActiveItem(item) {
+  item.classList.add('active-item');
+}
+
+function removeActiveItem(item) {
+  if (item != null) {
+    item.classList.remove('active-item');
+  }
+}
+
 function selectHat() {
+  var activeHat = hatOptions.querySelector('.active-item');
+  removeActiveItem(activeHat);
+  newOutfit.removeGarment(activeHat);
   if (event.target.classList.contains('top-hat-js')) {
-    console.log('tophat');
+    newOutfit.addGarment('top-hat');
+    addActiveItem(event.target);
   } else if (event.target.classList.contains('sun-hat-js')) {
-    console.log('sunhat');
+    newOutfit.addGarment('sun-hat');
+    addActiveItem(event.target);
   } else if (event.target.classList.contains('bow-js')) {
-    console.log('bow');
+    newOutfit.addGarment('bow');
+    addActiveItem(event.target);
   } else if (event.target.classList.contains('crown-js')) {
-    console.log('crown');
+    newOutfit.addGarment('crown');
+    addActiveItem(event.target);
   }
 }
 
 function selectClothes() {
+  var activeClothes = clothesOptions.querySelector('.active-item');
+  removeActiveItem(activeClothes);
+  newOutfit.removeGarment(activeClothes);
   if (event.target.classList.contains('vest-js')) {
-    console.log('vest');
+    newOutfit.addGarment('vest');
+    addActiveItem(event.target);
   } else if (event.target.classList.contains('dress-js')) {
-    console.log('dress');
+    newOutfit.addGarment('dress');
+    addActiveItem(event.target);
   } else if (event.target.classList.contains('tuxedo-js')) {
-    console.log('tuxedo');
+    newOutfit.addGarment('tuxedo');
+    addActiveItem(event.target);
   }
 }
 
 function selectAccessories() {
+  var activeAccessories = accessoriesOptions.querySelector('.active-item');
+  removeActiveItem(activeAccessories);
+  newOutfit.removeGarment(activeAccessories);
   if (event.target.classList.contains('necklace-js')) {
-    console.log('necklace');
+    newOutfit.addGarment('necklace');
+    addActiveItem(event.target);
   } else if (event.target.classList.contains('bowtie-js')) {
-    console.log('bowtie');
+    newOutfit.addGarment('bowtie');
+    addActiveItem(event.target);
   } else if (event.target.classList.contains('watch-js')) {
-    console.log('watch');
+    newOutfit.addGarment('watch');
+    addActiveItem(event.target);
   } else if (event.target.classList.contains('space-helmet-js')) {
-    console.log('space-helmet');
+    newOutfit.addGarment('space-helmet');
+    addActiveItem(event.target);
   } else if (event.target.classList.contains('earrings-js')) {
-    console.log('earrings');
+    newOutfit.addGarment('earrings');
+    addActiveItem(event.target);
   }
 }
 
 function selectBackground() {
+  var activeBackground = backgroundOptions.querySelector('.active-item');
+  removeActiveItem(activeBackground);
+  newOutfit.removeGarment(activeBackground);
   if (event.target.classList.contains('sky-js')) {
-    console.log('sky');
+    newOutfit.addGarment('sky');
+    addActiveItem(event.target);
   } else if (event.target.classList.contains('sunset-js')) {
-    console.log('sunset');
+    newOutfit.addGarment('sunset');
+    addActiveItem(event.target);
   } else if (event.target.classList.contains('park-js')) {
-    console.log('park');
+    newOutfit.addGarment('park');
+    addActiveItem(event.target);
   } else if (event.target.classList.contains('beach-js')) {
-    console.log('beach');
+    newOutfit.addGarment('beach');
+    addActiveItem(event.target);
   } else if (event.target.classList.contains('space-js')) {
-    console.log('space');
+    newOutfit.addGarment('space');
+    addActiveItem(event.target);
   }
 };
