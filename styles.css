@@ -106,8 +106,8 @@ button {
   position: relative;
 }
 
-.z-index {
-  z-index: 5;
+.hidden {
+  display: none;
 }
 
 .bear-image {
@@ -117,11 +117,22 @@ button {
 
 .bear-image img {
   width: 80%;
+}
 
+.image-items {
+    z-index: 3;
+}
+
+.bear {
+  z-index: 2;
 }
 
 .image-absolute {
   position: absolute;
+}
+
+.image-background {
+  z-index: 1;
 }
 
 .outfit-name-input {
