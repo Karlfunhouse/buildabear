@@ -10,16 +10,25 @@ clothesOptions.addEventListener('click', selectClothes);
 accessoriesOptions.addEventListener('click', selectAccessories);
 backgroundOptions.addEventListener('click', selectBackground);
 
+function addActiveItem(item) {
+  item.classList.add('active-item');
+}
+
 function selectHat() {
+  var activeItem = document.querySelector('.active-item');
+  newOutfit.removeGarment(activeItem);
   if (event.target.classList.contains('top-hat-js')) {
     newOutfit.addGarment('top-hat');
-    console.log(newOutfit);
+    addActiveItem(event.target);
   } else if (event.target.classList.contains('sun-hat-js')) {
-    console.log('sunhat');
+    newOutfit.addGarment('sun-hat');
+    addActiveItem(event.target);
   } else if (event.target.classList.contains('bow-js')) {
-    console.log('bow');
+    newOutfit.addGarment('bow');
+    addActiveItem(event.target);
   } else if (event.target.classList.contains('crown-js')) {
-    console.log('crown');
+    newOutfit.addGarment('crown');
+    addActiveItem(event.target);
   }
 }
 
