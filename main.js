@@ -129,6 +129,8 @@ function submitForm(event) {
   clearForm();
   clearBear();
   clearButtons();
+  disableSaveButton();
+}
 };
 
 function checkFormValid() {
@@ -136,6 +138,10 @@ function checkFormValid() {
     saveButton.removeAttribute('disabled');
   }
 };
+
+function disableSaveButton() {
+  saveButton.setAttribute('disabled', "");
+}
 
 function clearForm() {
   saveForm.reset();
