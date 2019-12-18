@@ -4,47 +4,56 @@ var clothesOptions = document.querySelector('.clothes-button-container-js');
 var accessoriesOptions = document.querySelector('.accessories-button-container-js');
 var backgroundOptions = document.querySelector('.background-button-container-js');
 
-
 hatOptions.addEventListener('click', selectHat);
 clothesOptions.addEventListener('click', selectClothes);
 accessoriesOptions.addEventListener('click', selectAccessories);
 backgroundOptions.addEventListener('click', selectBackground);
 
-function addActiveItem(item) {
+// visually displays active button in DOM on button click by adding active-item class
+function makeActiveItem(item) {
   item.classList.add('active-item');
 }
 
+// clears previously active button when new button is clicked in same category by removing active-item class
 function removeActiveItem(item) {
   if (item != null) {
     item.classList.remove('active-item');
   }
 }
 
-function displayImage(imageType, imageId) {
-  var imageTypeArray = document.querySelectorAll(`.image-${imageType}`);
-    for (var i = 0; i < imageTypeArray.length; i++) {
-      if (imageId.value == imageTypeArray[i].id) {
-        imageTypeArray[i].classList.remove('hidden');
+// grabs array of all images in a category, then loops through array and looks for a matching image based on the buttonId passed.
+// displays the image with the matching buttonId.
+function displayImage(imageCategory, buttonId) {
+  var imageCategoryArray = document.querySelectorAll(`.image-${imageCategory}`);
+    for (var i = 0; i < imageCategoryArray.length; i++) {
+      if (buttonId.value == imageCategoryArray[i].id) {
+        imageCategoryArray[i].classList.remove('hidden');
       }
     }
 }
 
-function removeImage(imageType) {
-  var imageTypeArray = document.querySelectorAll(`.image-${imageType}`);
-  for (var i = 0; i < imageTypeArray.length; i++) {
-    if (!imageTypeArray[i].classList.contains('hidden')) {
-      imageTypeArray[i].classList.add('hidden')
+// grabs array of all images in a category, then loops through array and looks for an image that does not have the 'hidden' class, then makes that image hidden.
+// this works because only one image from each category should be displayed at a time.
+function removeImage(imageCategory) {
+  var imageCategoryArray = document.querySelectorAll(`.image-${imageCategory}`);
+  for (var i = 0; i < imageCategoryArray.length; i++) {
+    if (!imageCategoryArray[i].classList.contains('hidden')) {
+      imageCategoryArray[i].classList.add('hidden')
     }
   }
 }
 
+// THIS COMMENT APPLIES TO ALL 'select...' FUNCTIONS BELOW
+// this function is the event handler for its respective category.
+// on button click, if the event.target is not active it will be made active, the respective image will be displayed, and the respective item will be passed into the object's garments array.
+// if the button is active, it will be deselected and the item will be removed from the garments array + removed from DOM bear display.
 function selectHat() {
   if (event.target != event.currentTarget && !event.target.classList.contains('active-item')) {
     removeImage('hats');
     displayImage('hats', event.target)
     var activeHat = hatOptions.querySelector('.active-item');
     removeActiveItem(activeHat);
-    addActiveItem(event.target);
+    makeActiveItem(event.target);
     if (activeHat != null) {
       newOutfit.removeGarment(activeHat.value);
     }
@@ -62,7 +71,7 @@ function selectClothes() {
     displayImage('clothes', event.target)
     var activeClothes = clothesOptions.querySelector('.active-item');
     removeActiveItem(activeClothes);
-    addActiveItem(event.target);
+    makeActiveItem(event.target);
     if (activeClothes != null) {
       newOutfit.removeGarment(activeClothes.value);
     }
@@ -80,7 +89,7 @@ function selectAccessories() {
     displayImage('accessories', event.target)
     var activeAccessories = accessoriesOptions.querySelector('.active-item');
     removeActiveItem(activeAccessories);
-    addActiveItem(event.target);
+    makeActiveItem(event.target);
     if (activeAccessories != null) {
       newOutfit.removeGarment(activeAccessories.value);
     }
@@ -98,7 +107,7 @@ function selectBackground() {
     displayImage('background', event.target)
     var activeBackground = backgroundOptions.querySelector('.active-item');
     removeActiveItem(activeBackground);
-    addActiveItem(event.target);
+    makeActiveItem(event.target);
     if (activeBackground != null) {
       newOutfit.removeGarment(activeBackground.value);
     }
