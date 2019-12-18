@@ -128,6 +128,7 @@ function submitForm(event) {
   displayOutfitCard();
   clearForm();
   clearBear();
+  clearButtons();
 }
 
 function checkFormValid() {
@@ -144,6 +145,13 @@ function clearBear() {
   var outfitItems = document.querySelectorAll('.image-absolute');
   for (var i = 0; i < outfitItems.length; i++) {
     outfitItems[i].classList.add('hidden');
+  }
+}
+
+function clearButtons() {
+  var activeButtons = document.querySelectorAll('.active-item');
+  for (var i = 0; i < activeButtons.length; i++) {
+    activeButtons[i].classList.remove('active-item');
   }
 }
 
