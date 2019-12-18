@@ -124,6 +124,11 @@ function selectBackground() {
 function submitForm(event) {
   event.preventDefault();
   displayOutfitCard();
+  clearForm();
+}
+
+function clearForm() {
+  saveForm.reset();
 }
 
 function displayOutfitCard() {
