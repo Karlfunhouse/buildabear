@@ -1,10 +1,10 @@
-var newOutfit = new Outfit(null, null, [], null);
+var newOutfit = new Outfit(Date.now(), null, [], null);
 var hatOptions = document.querySelector('.hat-button-container-js');
 var clothesOptions = document.querySelector('.clothes-button-container-js');
 var accessoriesOptions = document.querySelector('.accessories-button-container-js');
 var backgroundOptions = document.querySelector('.background-button-container-js');
 var saveForm = document.querySelector('.save-outfit-form-js');
-var saveButton = document.querySelector('.save-outfit-button-js')
+var saveButton = document.querySelector('.save-outfit-button-js');
 
 hatOptions.addEventListener('click', selectHat);
 clothesOptions.addEventListener('click', selectClothes);
@@ -42,7 +42,7 @@ function removeImage(imageCategory) {
   var imageCategoryArray = document.querySelectorAll(`.image-${imageCategory}`);
   for (var i = 0; i < imageCategoryArray.length; i++) {
     if (!imageCategoryArray[i].classList.contains('hidden')) {
-      imageCategoryArray[i].classList.add('hidden')
+      imageCategoryArray[i].classList.add('hidden');
     }
   }
 }
@@ -54,7 +54,7 @@ function removeImage(imageCategory) {
 function selectHat() {
   if (event.target != event.currentTarget && !event.target.classList.contains('active-item')) {
     removeImage('hats');
-    displayImage('hats', event.target)
+    displayImage('hats', event.target);
     var activeHat = hatOptions.querySelector('.active-item');
     removeActiveItem(activeHat);
     makeActiveItem(event.target);
@@ -72,7 +72,7 @@ function selectHat() {
 function selectClothes() {
   if (event.target != event.currentTarget && !event.target.classList.contains('active-item')) {
     removeImage('clothes');
-    displayImage('clothes', event.target)
+    displayImage('clothes', event.target);
     var activeClothes = clothesOptions.querySelector('.active-item');
     removeActiveItem(activeClothes);
     makeActiveItem(event.target);
@@ -90,7 +90,7 @@ function selectClothes() {
 function selectAccessories() {
   if (event.target != event.currentTarget && !event.target.classList.contains('active-item')) {
     removeImage('accessories');
-    displayImage('accessories', event.target)
+    displayImage('accessories', event.target);
     var activeAccessories = accessoriesOptions.querySelector('.active-item');
     removeActiveItem(activeAccessories);
     makeActiveItem(event.target);
@@ -103,7 +103,7 @@ function selectAccessories() {
     event.target.classList.remove('active-item');
     newOutfit.removeGarment(event.target.value);
   }
-}
+};
 
 function selectBackground() {
   if (event.target != event.currentTarget && !event.target.classList.contains('active-item')) {
@@ -129,11 +129,11 @@ function submitForm(event) {
   clearForm();
   clearBear();
   clearButtons();
-}
+};
 
 function checkFormValid() {
   if (saveForm.checkValidity() === true) {
-    saveButton.removeAttribute('disabled')
+    saveButton.removeAttribute('disabled');
   }
 };
 
@@ -146,7 +146,7 @@ function clearBear() {
   for (var i = 0; i < outfitItems.length; i++) {
     outfitItems[i].classList.add('hidden');
   }
-}
+};
 
 function clearButtons() {
   var activeButtons = document.querySelectorAll('.active-item');
