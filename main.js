@@ -131,7 +131,6 @@ function submitForm(event) {
   clearButtons();
   disableSaveButton();
 }
-};
 
 function checkFormValid() {
   if (saveForm.checkValidity() === true) {
