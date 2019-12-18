@@ -134,7 +134,7 @@ function submitForm(event) {
 
 function checkFormValid() {
   if (saveForm.checkValidity() === true) {
-    saveButton.removeAttribute('disabled')
+    saveButton.removeAttribute('disabled');
   }
 };
 
