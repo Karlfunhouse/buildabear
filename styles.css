@@ -144,7 +144,11 @@ button {
   margin: 2.5% 0;
 }
 
-.save-outfit {
+.save-outfit-form {
+  align-items: center;
+}
+
+.save-outfit-button {
   background-color: #57aec1;
   color: white;
 }
