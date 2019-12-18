@@ -127,10 +127,7 @@ function submitForm(event) {
   event.preventDefault();
   displayOutfitCard();
   clearForm();
-}
-
-function clearForm() {
-  saveForm.reset();
+  clearBear();
 }
 
 function checkFormValid() {
@@ -138,6 +135,17 @@ function checkFormValid() {
     saveButton.removeAttribute('disabled')
   }
 };
+
+function clearForm() {
+  saveForm.reset();
+}
+
+function clearBear() {
+  var outfitItems = document.querySelectorAll('.image-absolute');
+  for (var i = 0; i < outfitItems.length; i++) {
+    outfitItems[i].classList.add('hidden');
+  }
+}
 
 function displayOutfitCard() {
   var cardTitle = document.querySelector('.outfit-name-input-js').value;
