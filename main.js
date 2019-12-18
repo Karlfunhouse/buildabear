@@ -118,3 +118,13 @@ function selectBackground() {
     newOutfit.removeGarment(event.target.value);
   }
 };
+
+
+function displayOutfitCard() {
+  var savedOutfitsContainer = document.querySelector('.saved-outfits-container');
+  savedOutfitsContainer.insertAdjacentHTML('afterbegin',
+  `<div class="saved-outfit-card">
+    <p>Fancy</p>
+    <i class="fas fa-times"></i>
+  </div>`)
+}
