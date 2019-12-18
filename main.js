@@ -3,11 +3,13 @@ var hatOptions = document.querySelector('.hat-button-container-js');
 var clothesOptions = document.querySelector('.clothes-button-container-js');
 var accessoriesOptions = document.querySelector('.accessories-button-container-js');
 var backgroundOptions = document.querySelector('.background-button-container-js');
+var saveForm = document.querySelector('.save-outfit-form-js');
 
 hatOptions.addEventListener('click', selectHat);
 clothesOptions.addEventListener('click', selectClothes);
 accessoriesOptions.addEventListener('click', selectAccessories);
 backgroundOptions.addEventListener('click', selectBackground);
+saveForm.addEventListener('submit', submitForm)
 
 // visually displays active button in DOM on button click by adding active-item class
 function makeActiveItem(item) {
@@ -119,12 +121,17 @@ function selectBackground() {
   }
 };
 
+function submitForm(event) {
+  event.preventDefault();
+  displayOutfitCard();
+}
 
 function displayOutfitCard() {
+  var cardTitle = document.querySelector('.outfit-name-input-js').value;
   var savedOutfitsContainer = document.querySelector('.saved-outfits-container');
   savedOutfitsContainer.insertAdjacentHTML('afterbegin',
   `<div class="saved-outfit-card">
-    <p>Fancy</p>
+    <p>${cardTitle}</p>
     <i class="fas fa-times"></i>
   </div>`)
-}
+};
