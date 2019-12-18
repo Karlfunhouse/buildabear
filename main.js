@@ -4,12 +4,14 @@ var clothesOptions = document.querySelector('.clothes-button-container-js');
 var accessoriesOptions = document.querySelector('.accessories-button-container-js');
 var backgroundOptions = document.querySelector('.background-button-container-js');
 var saveForm = document.querySelector('.save-outfit-form-js');
+var saveButton = document.querySelector('.save-outfit-button-js')
 
 hatOptions.addEventListener('click', selectHat);
 clothesOptions.addEventListener('click', selectClothes);
 accessoriesOptions.addEventListener('click', selectAccessories);
 backgroundOptions.addEventListener('click', selectBackground);
-saveForm.addEventListener('submit', submitForm)
+saveForm.addEventListener('submit', submitForm);
+saveForm.addEventListener('input', checkFormValid);
 
 // visually displays active button in DOM on button click by adding active-item class
 function makeActiveItem(item) {
@@ -130,6 +132,12 @@ function submitForm(event) {
 function clearForm() {
   saveForm.reset();
 }
+
+function checkFormValid() {
+  if (saveForm.checkValidity() === true) {
+    saveButton.removeAttribute('disabled')
+  }
+};
 
 function displayOutfitCard() {
   var cardTitle = document.querySelector('.outfit-name-input-js').value;
