@@ -50,6 +50,7 @@ function selectHat() {
     }
     newOutfit.addGarment(event.target.value);
   } else {
+    removeImage('hats');
     event.target.classList.remove('active-item');
     newOutfit.removeGarment(event.target.value);
   }
@@ -67,6 +68,7 @@ function selectClothes() {
     }
     newOutfit.addGarment(event.target.value);
   } else {
+    removeImage('clothes');
     event.target.classList.remove('active-item');
     newOutfit.removeGarment(event.target.value);
   }
@@ -84,6 +86,7 @@ function selectAccessories() {
     }
     newOutfit.addGarment(event.target.value);
   } else {
+    removeImage('accessories');
     event.target.classList.remove('active-item');
     newOutfit.removeGarment(event.target.value);
   }
@@ -101,6 +104,7 @@ function selectBackground() {
     }
     newOutfit.addGarment(event.target.value);
   } else {
+    removeImage('background');
     event.target.classList.remove('active-item');
     newOutfit.removeGarment(event.target.value);
   }
