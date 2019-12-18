@@ -29,8 +29,18 @@ function displayImage(imageType, imageId) {
     }
 }
 
+function removeImage(imageType) {
+  var imageTypeArray = document.querySelectorAll(`.image-${imageType}`);
+  for (var i = 0; i < imageTypeArray.length; i++) {
+    if (!imageTypeArray[i].classList.contains('hidden')) {
+      imageTypeArray[i].classList.add('hidden')
+    }
+  }
+}
+
 function selectHat() {
   if (event.target != event.currentTarget && !event.target.classList.contains('active-item')) {
+    removeImage('hats');
     displayImage('hats', event.target)
     var activeHat = hatOptions.querySelector('.active-item');
     removeActiveItem(activeHat);
@@ -47,6 +57,7 @@ function selectHat() {
 
 function selectClothes() {
   if (event.target != event.currentTarget && !event.target.classList.contains('active-item')) {
+    removeImage('clothes');
     displayImage('clothes', event.target)
     var activeClothes = clothesOptions.querySelector('.active-item');
     removeActiveItem(activeClothes);
@@ -63,6 +74,7 @@ function selectClothes() {
 
 function selectAccessories() {
   if (event.target != event.currentTarget && !event.target.classList.contains('active-item')) {
+    removeImage('accessories');
     displayImage('accessories', event.target)
     var activeAccessories = accessoriesOptions.querySelector('.active-item');
     removeActiveItem(activeAccessories);
@@ -79,6 +91,7 @@ function selectAccessories() {
 
 function selectBackground() {
   if (event.target != event.currentTarget && !event.target.classList.contains('active-item')) {
+    removeImage('background');
     displayImage('background', event.target)
     var activeBackground = backgroundOptions.querySelector('.active-item');
     removeActiveItem(activeBackground);
