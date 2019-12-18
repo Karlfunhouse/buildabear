@@ -151,6 +151,13 @@ button {
 .save-outfit-button {
   background-color: #57aec1;
   color: white;
+  cursor: pointer;
+}
+
+.save-outfit-button:disabled {
+  background: grey;
+  opacity: 80%;
+  cursor: not-allowed;
 }
 
 /* Right column display (Saved outfits) */
