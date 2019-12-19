@@ -180,6 +180,7 @@ function storeOutfit(outfit) {
   window.localStorage.setItem(outfit.title, JSON.stringify(outfit));
 }
 
+// Immediately invoke the function, so that it fires on page load 
 // Loop through the entire length of the localStorage array,
 // Grab the key of each item in the array,
 // Call the getItem method to retrieve each item's data by using our respective localStorage key,
