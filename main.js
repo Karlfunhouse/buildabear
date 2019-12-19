@@ -5,6 +5,7 @@ var accessoriesOptions = document.querySelector('.accessories-button-container-j
 var backgroundOptions = document.querySelector('.background-button-container-js');
 var saveForm = document.querySelector('.save-outfit-form-js');
 var saveButton = document.querySelector('.save-outfit-button-js');
+var savedOutfitsContainer = document.querySelector('.saved-outfits-container-js');
 var savedOutfits = [];
 
 hatOptions.addEventListener('click', selectHat);
@@ -13,6 +14,7 @@ accessoriesOptions.addEventListener('click', selectAccessories);
 backgroundOptions.addEventListener('click', selectBackground);
 saveForm.addEventListener('submit', submitForm);
 saveForm.addEventListener('input', checkFormValid);
+savedOutfitsContainer.addEventListener('click', removeCard);
 
 getOutfits();
 
@@ -218,3 +220,9 @@ function getOutfits() {
     savedOutfits.push(outfit);
   }
 };
+
+function removeCard() {
+  if (event.target.classList.contains('fa-times')) {
+    event.target.parentNode.parentNode.removeChild(event.target.parentNode)
+  }
+}
