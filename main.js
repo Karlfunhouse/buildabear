@@ -112,14 +112,14 @@ function selectBackground() {
     var activeBackground = backgroundOptions.querySelector('.active-item');
     removeActiveItem(activeBackground);
     makeActiveItem(event.target);
-    if (activeBackground != null) {
-      newOutfit.removeGarment(activeBackground.value);
-    }
-    newOutfit.addGarment(event.target.value);
+    // if (activeBackground != null) {
+    //   newOutfit.removeGarment(activeBackground.value);
+    // }
+    newOutfit.background = event.target.value;
   } else {
     removeImage('background');
     event.target.classList.remove('active-item');
-    newOutfit.removeGarment(event.target.value);
+    newOutfit.background = null;
   }
 };
 
