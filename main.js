@@ -177,7 +177,6 @@ function saveCardTitle() {
 
 function storeOutfit(outfit) {
   window.localStorage.setItem(outfit.title, JSON.stringify(outfit));
-  console.log(outfit.title)
 }
 
 // we will need the getItem piece to retrieve the string later.
