@@ -112,9 +112,6 @@ function selectBackground() {
     var activeBackground = backgroundOptions.querySelector('.active-item');
     removeActiveItem(activeBackground);
     makeActiveItem(event.target);
-    // if (activeBackground != null) {
-    //   newOutfit.removeGarment(activeBackground.value);
-    // }
     newOutfit.background = event.target.value;
   } else {
     removeImage('background');
@@ -127,7 +124,8 @@ function selectBackground() {
 function submitForm(event) {
   event.preventDefault();
   displayOutfitCard();
-  saveCardTitle()
+  saveCardTitle();
+  storeOutfit(newOutfit);
   clearForm();
   clearBear();
   clearButtons();
@@ -176,3 +174,11 @@ function saveCardTitle() {
   var cardTitle = document.querySelector('.outfit-name-input-js').value;
   newOutfit.title = cardTitle;
 }
+
+function storeOutfit(outfit) {
+  window.localStorage.setItem(outfit.title, JSON.stringify(outfit));
+  console.log(outfit.title)
+}
+
+// we will need the getItem piece to retrieve the string later.
+// var storeTest2 = window.localStorage.getItem("park-bear2");
