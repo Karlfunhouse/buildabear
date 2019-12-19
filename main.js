@@ -5,6 +5,7 @@ var accessoriesOptions = document.querySelector('.accessories-button-container-j
 var backgroundOptions = document.querySelector('.background-button-container-js');
 var saveForm = document.querySelector('.save-outfit-form-js');
 var saveButton = document.querySelector('.save-outfit-button-js');
+var savedOutfits = [];
 
 hatOptions.addEventListener('click', selectHat);
 clothesOptions.addEventListener('click', selectClothes);
@@ -184,12 +185,10 @@ function storeOutfit(outfit) {
 // Call the getItem method to retrieve each item's data by using our respective localStorage key,
 // Turn the data from a string back into an object using JSON.parse,
 // Push the retrieved object into our saved outfits array!
-function getOutfits() {
+(function getOutfits() {
   for (var i = 0; i < localStorage.length; i++) {
     var outfitKey = localStorage.key([i]);
     var outfit = JSON.parse(window.localStorage.getItem(outfitKey));
     savedOutfits.push(outfit);
   }
-}
-
-getOutfits();
+})();
