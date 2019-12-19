@@ -186,7 +186,7 @@ function loadOutfitCard() {
   for (var i = 0; i < savedOutfits.length; i++) {
     var savedOutfitsContainer = document.querySelector('.saved-outfits-container');
     var cardTitle = savedOutfits[i].title;
-    savedOutfitsContainer.insertAdjacentHTML('afterbegin',
+    savedOutfitsContainer.insertAdjacentHTML('beforeend',
     `<div class="saved-outfit-card">
       <p>${cardTitle}</p>
       <i class="fas fa-times"></i>
