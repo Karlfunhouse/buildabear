@@ -178,6 +178,10 @@ function displayOutfitCard() {
   </div>`);
 };
 
+// Iterate through each item in saved outfits array,
+// Grab the card title of each item & save it as a variable,
+// Grab the parent container to load into,
+// Insert card HTML into DOM
 function loadOutfitCard() {
   for (var i = 0; i < savedOutfits.length; i++) {
     var savedOutfitsContainer = document.querySelector('.saved-outfits-container');
