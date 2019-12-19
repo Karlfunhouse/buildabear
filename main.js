@@ -179,5 +179,12 @@ function storeOutfit(outfit) {
   window.localStorage.setItem(outfit.title, JSON.stringify(outfit));
 }
 
-// we will need the getItem piece to retrieve the string later.
-// var storeTest2 = window.localStorage.getItem("park-bear2");
+function getOutfits() {
+  for (var i = 0; i < localStorage.length; i++) {
+    var outfitKey = localStorage.key([i]);
+    var outfit = JSON.parse(window.localStorage.getItem(outfitKey));
+    savedOutfits.push(outfit);
+  }
+}
+
+getOutfits();
