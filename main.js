@@ -123,9 +123,11 @@ function selectBackground() {
   }
 };
 
+// Main function that fires when Save button is clicked.
 function submitForm(event) {
   event.preventDefault();
   displayOutfitCard();
+  saveCardTitle()
   clearForm();
   clearBear();
   clearButtons();
@@ -169,3 +171,8 @@ function displayOutfitCard() {
     <i class="fas fa-times"></i>
   </div>`)
 };
+
+function saveCardTitle() {
+  var cardTitle = document.querySelector('.outfit-name-input-js').value;
+  newOutfit.title = cardTitle;
+}
