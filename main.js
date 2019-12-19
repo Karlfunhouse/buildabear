@@ -14,6 +14,8 @@ backgroundOptions.addEventListener('click', selectBackground);
 saveForm.addEventListener('submit', submitForm);
 saveForm.addEventListener('input', checkFormValid);
 
+getOutfits();
+
 // visually displays active button in DOM on button click by adding active-item class
 function makeActiveItem(item) {
   item.classList.add('active-item');
@@ -173,8 +175,22 @@ function displayOutfitCard() {
   `<div class="saved-outfit-card">
     <p>${cardTitle}</p>
     <i class="fas fa-times"></i>
-  </div>`)
+  </div>`);
 };
+
+function loadOutfitCard() {
+  for (var i = 0; i < savedOutfits.length; i++) {
+    var savedOutfitsContainer = document.querySelector('.saved-outfits-container');
+    var cardTitle = savedOutfits[i].title;
+    savedOutfitsContainer.insertAdjacentHTML('afterbegin',
+    `<div class="saved-outfit-card">
+      <p>${cardTitle}</p>
+      <i class="fas fa-times"></i>
+    </div>`);
+  }
+}
+
+loadOutfitCard();
 
 function saveCardTitle() {
   var cardTitle = document.querySelector('.outfit-name-input-js').value;
@@ -191,10 +207,10 @@ function storeOutfit(outfit) {
 // Call the getItem method to retrieve each item's data by using our respective localStorage key,
 // Turn the data from a string back into an object using JSON.parse,
 // Push the retrieved object into our saved outfits array!
-(function getOutfits() {
+function getOutfits() {
   for (var i = 0; i < localStorage.length; i++) {
     var outfitKey = localStorage.key([i]);
     var outfit = JSON.parse(window.localStorage.getItem(outfitKey));
     savedOutfits.push(outfit);
   }
-})();
+};
