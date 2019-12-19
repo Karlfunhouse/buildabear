@@ -171,10 +171,11 @@ function clearButtons() {
 }
 
 function displayOutfitCard() {
+  var cardId = newOutfit.id;
   var cardTitle = document.querySelector('.outfit-name-input-js').value;
   var savedOutfitsContainer = document.querySelector('.saved-outfits-container');
   savedOutfitsContainer.insertAdjacentHTML('afterbegin',
-  `<div class="saved-outfit-card">
+  `<div class="saved-outfit-card" id="${cardId}">
     <p>${cardTitle}</p>
     <i class="fas fa-times"></i>
   </div>`);
@@ -188,8 +189,9 @@ function loadOutfitCard() {
   for (var i = 0; i < savedOutfits.length; i++) {
     var savedOutfitsContainer = document.querySelector('.saved-outfits-container');
     var cardTitle = savedOutfits[i].title;
+    var key = localStorage.key([i]);
     savedOutfitsContainer.insertAdjacentHTML('beforeend',
-    `<div class="saved-outfit-card">
+    `<div class="saved-outfit-card" id="${key}">
       <p>${cardTitle}</p>
       <i class="fas fa-times"></i>
     </div>`);
@@ -204,7 +206,7 @@ function saveCardTitle() {
 }
 
 function storeOutfit(outfit) {
-  window.localStorage.setItem(outfit.title, JSON.stringify(outfit));
+  window.localStorage.setItem(outfit.id, JSON.stringify(outfit));
 }
 
 // Immediately invoke the function, so that it fires on page load
@@ -222,7 +224,19 @@ function getOutfits() {
 };
 
 function removeCard() {
+  var outfitCard = event.target.parentNode;
+  console.log(outfitCard);
   if (event.target.classList.contains('fa-times')) {
     event.target.parentNode.parentNode.removeChild(event.target.parentNode)
+    clearOutfitCard(outfitCard);
+  }
+}
+
+function clearOutfitCard(card) {
+  for (var i = 0; i < localStorage.length; i++) {
+    var outfitKey = localStorage.key([i]);
+    if (outfitKey === card.id) {
+      localStorage.removeItem(outfitKey);
+    }
   }
 }
