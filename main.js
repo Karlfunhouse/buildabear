@@ -58,17 +58,12 @@ function selectBackground() {
   displayImages();
 };
 
-// Main function that fires when Save button is clicked.
 function submitForm(event) {
   event.preventDefault();
   displayOutfitCard();
   saveCardTitle();
   storeOutfit(newOutfit);
-  clearGarmentsArray();
-  clearForm();
-  clearBear();
-  clearButtons();
-  disableSaveButton();
+  resetPage();
 }
 
 function checkFormValid() {
@@ -77,26 +72,14 @@ function checkFormValid() {
   }
 };
 
-function disableSaveButton() {
-  saveButton.setAttribute('disabled', "");
-}
-
-function clearForm() {
+function resetPage() {
   saveForm.reset();
-}
-
-function clearBear() {
+  saveButton.setAttribute('disabled', "");
   var outfitItems = document.querySelectorAll('.image-absolute');
   for (var i = 0; i < outfitItems.length; i++) {
     outfitItems[i].classList.add('hidden');
   }
-};
-
-function clearGarmentsArray() {
   newOutfit = new Outfit(Date.now(), null, [], null);
-}
-
-function clearButtons() {
   var activeButtons = document.querySelectorAll('.active-item');
   for (var i = 0; i < activeButtons.length; i++) {
     activeButtons[i].classList.remove('active-item');
@@ -107,7 +90,7 @@ function displayOutfitCard() {
   var cardId = newOutfit.id;
   var cardTitle = document.querySelector('.outfit-name-input-js').value;
   var savedOutfitsContainer = document.querySelector('.saved-outfits-container');
-  savedOutfitsContainer.insertAdjacentHTML('afterbegin',
+  savedOutfitsContainer.insertAdjacentHTML('beforeend',
   `<div class="saved-outfit-card" id="${cardId}">
     <p>${cardTitle}</p>
     <i class="fas fa-times"></i>
@@ -122,9 +105,8 @@ function loadOutfitCard() {
   for (var i = 0; i < savedOutfits.length; i++) {
     var savedOutfitsContainer = document.querySelector('.saved-outfits-container');
     var cardTitle = savedOutfits[i].title;
-    var key = localStorage.key([i]);
     savedOutfitsContainer.insertAdjacentHTML('beforeend',
-    `<div class="saved-outfit-card" id="${key}">
+    `<div class="saved-outfit-card">
       <p>${cardTitle}</p>
       <i class="fas fa-times"></i>
     </div>`);
@@ -139,33 +121,27 @@ function saveCardTitle() {
 }
 
 function storeOutfit(outfit) {
-  window.localStorage.setItem(outfit.id, JSON.stringify(outfit));
+  savedOutfits.push(outfit);
+  window.localStorage.setItem('outfits', JSON.stringify(savedOutfits));
 }
 
-// Immediately invoke the function, so that it fires on page load
-// Loop through the entire length of the localStorage array,
-// Grab the key of each item in the array,
-// Call the getItem method to retrieve each item's data by using our respective localStorage key,
-// Turn the data from a string back into an object using JSON.parse,
-// Push the retrieved object into our saved outfits array!
 function getOutfits() {
-  for (var i = 0; i < localStorage.length; i++) {
-    var outfitKey = localStorage.key([i]);
-    var outfit = JSON.parse(window.localStorage.getItem(outfitKey));
-    savedOutfits.push(outfit);
+  var outfitKey = JSON.parse(localStorage.getItem('outfits'));
+  if (outfitKey !== null) {
+    savedOutfits = outfitKey;
   }
-};
+}
 
 function removeCard() {
   var outfitCard = event.target.parentNode;
   console.log(outfitCard);
   if (event.target.classList.contains('fa-times')) {
     event.target.parentNode.parentNode.removeChild(event.target.parentNode)
-    clearOutfitCard(outfitCard);
+    // clearOutfitCard();
   }
 }
 
-function clearOutfitCard(card) {
+function clearOutfitCard() {
   for (var i = 0; i < localStorage.length; i++) {
     var outfitKey = localStorage.key([i]);
     if (outfitKey === card.id) {
