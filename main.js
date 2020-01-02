@@ -17,6 +17,7 @@ saveForm.addEventListener('input', checkFormValid);
 savedOutfitsContainer.addEventListener('click', removeCard);
 
 getOutfits();
+loadOutfitCard();
 
 function displayActiveButtons() {
   var buttons = Array.prototype.slice.call(document.querySelectorAll('button'));
@@ -97,23 +98,16 @@ function displayOutfitCard() {
   </div>`);
 };
 
-// Iterate through each item in saved outfits array,
-// Grab the card title of each item & save it as a variable,
-// Grab the parent container to load into,
-// Insert card HTML into DOM
 function loadOutfitCard() {
   for (var i = 0; i < savedOutfits.length; i++) {
     var savedOutfitsContainer = document.querySelector('.saved-outfits-container');
-    var cardTitle = savedOutfits[i].title;
     savedOutfitsContainer.insertAdjacentHTML('beforeend',
-    `<div class="saved-outfit-card">
-      <p>${cardTitle}</p>
+    `<div class="saved-outfit-card" id="${savedOutfits[i].id}">
+      <p>${savedOutfits[i].title}</p>
       <i class="fas fa-times"></i>
     </div>`);
   }
 }
-
-loadOutfitCard();
 
 function saveCardTitle() {
   var cardTitle = document.querySelector('.outfit-name-input-js').value;
@@ -134,18 +128,13 @@ function getOutfits() {
 
 function removeCard() {
   var outfitCard = event.target.parentNode;
-  console.log(outfitCard);
   if (event.target.classList.contains('fa-times')) {
     event.target.parentNode.parentNode.removeChild(event.target.parentNode)
-    // clearOutfitCard();
+    clearOutfitCard(outfitCard);
   }
 }
 
-function clearOutfitCard() {
-  for (var i = 0; i < localStorage.length; i++) {
-    var outfitKey = localStorage.key([i]);
-    if (outfitKey === card.id) {
-      localStorage.removeItem(outfitKey);
-    }
-  }
+function clearOutfitCard(card) {
+  savedOutfits = savedOutfits.filter(outfit => outfit.id != card.id);
+  window.localStorage.setItem('outfits', JSON.stringify(savedOutfits));
 }
