@@ -18,61 +18,44 @@ savedOutfitsContainer.addEventListener('click', removeCard);
 
 getOutfits();
 
-// visually displays active button in DOM on button click by adding active-item class
-function makeActiveItem(item) {
+function displayActiveButtons() {
+  var buttons = Array.prototype.slice.call(document.querySelectorAll('button'));
+  var items = newOutfit.garments.map(garment => garment.id);
+  var background = newOutfit.background;
+  var matches = buttons.filter(button => items.find(item => item === button.value) || button.value === background);
+  buttons.forEach(button => button.classList.remove('active-item'));
+  matches.forEach(match => match.classList.add('active-item'));
 }
-
-// clears previously active button when new button is clicked in same category by removing active-item class
-function removeActiveItem(item) {
+  
+function displayImages() {
+  var images = Array.prototype.slice.call(document.querySelectorAll('.image-absolute'));
+  var items = newOutfit.garments.map(garment => garment.id);
+  var background = newOutfit.background;
+  var matches = images.filter(image => items.find(item => item === image.id) || image.id === background);
+  images.forEach(image => image.classList.add('hidden'));
+  matches.forEach(match => match.classList.remove('hidden'));
 }
-
-// grabs array of all images in a category, then loops through array and looks for a matching image based on the buttonId passed.
-// displays the image with the matching buttonId.
-function displayImage(imageCategory, buttonId) {
-}
-
-// grabs array of all images in a category, then loops through array and looks for an image that does not have the 'hidden' class, then makes that image hidden.
-// this works because only one image from each category should be displayed at a time.
-function removeImage(imageCategory) {
-}
-
-// THIS COMMENT APPLIES TO ALL 'select...' FUNCTIONS BELOW
-// this function is the event handler for its respective category.
-// on button click, if the event.target is not active it will be made active, the respective image will be displayed, and the respective item will be passed into the object's garments array.
-// if the button is active, it will be deselected and the item will be removed from the garments array + removed from DOM bear display.
-// function selectHat() {
-//   newOutfit.removeGarment(event.target.classList[0]);
-//   newOutfit.addGarment({id: event.target.value, type: event.target.classList[0]});
-// }
-//
-// function selectClothes() {
-//   newOutfit.removeGarment(event.target.classList[0]);
-//   newOutfit.addGarment({id: event.target.value, type: event.target.classList[0]});
-// }
-//
-// function selectAccessories() {
-//   newOutfit.removeGarment(event.target.classList[0]);
-//   newOutfit.addGarment({id: event.target.value, type: event.target.classList[0]});
-// };
 
 function selectItems() {
-  newOutfit.removeGarment(event.target.classList[0]);
-  newOutfit.addGarment({id: event.target.value, type: event.target.classList[0]});
+  if (event.target.classList.contains('active-item') && event.target !== event.currentTarget) {
+    event.target.classList.remove('active-item');
+    newOutfit.removeGarment(event.target.classList[0]);
+  } else if (event.target !== event.currentTarget) {
+    newOutfit.removeGarment(event.target.classList[0]);
+    newOutfit.addGarment({id: event.target.value, type: event.target.classList[0]});
+  }
+  displayActiveButtons();
+  displayImages();
 };
 
 function selectBackground() {
-  if (event.target != event.currentTarget && !event.target.classList.contains('active-item')) {
-    removeImage('background');
-    displayImage('background', event.target)
-    var activeBackground = backgroundOptions.querySelector('.active-item');
-    removeActiveItem(activeBackground);
-    makeActiveItem(event.target);
-    newOutfit.background = event.target.value;
-  } else {
-    removeImage('background');
-    event.target.classList.remove('active-item');
+  if (event.target != event.currentTarget && event.target.classList.contains('active-item')) {
     newOutfit.background = null;
+  } else if (event.target !== event.currentTarget) {
+    newOutfit.background = event.target.value;
   }
+  displayActiveButtons();
+  displayImages();
 };
 
 // Main function that fires when Save button is clicked.
