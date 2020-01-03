@@ -1,16 +1,12 @@
 var newOutfit = new Outfit(Date.now(), null, [], null);
-var hatOptions = document.querySelector('.hat-button-container-js');
-var clothesOptions = document.querySelector('.clothes-button-container-js');
-var accessoriesOptions = document.querySelector('.accessories-button-container-js');
+var buttonColumn = document.querySelector('.outfit-options');
 var backgroundOptions = document.querySelector('.background-button-container-js');
 var saveForm = document.querySelector('.save-outfit-form-js');
 var saveButton = document.querySelector('.save-outfit-button-js');
 var savedOutfitsContainer = document.querySelector('.saved-outfits-container-js');
 var savedOutfits = [];
 
-hatOptions.addEventListener('click', selectItems);
-clothesOptions.addEventListener('click', selectItems);
-accessoriesOptions.addEventListener('click', selectItems);
+buttonColumn.addEventListener('click', selectItems)
 backgroundOptions.addEventListener('click', selectBackground);
 saveForm.addEventListener('submit', submitForm);
 saveForm.addEventListener('input', checkFormValid);
@@ -37,11 +33,12 @@ function displayImages() {
   matches.forEach(match => match.classList.remove('hidden'));
 }
 
-function selectItems() {
-  if (event.target.classList.contains('active-item') && event.target !== event.currentTarget) {
+function selectItems(event) {
+  if (event.target.classList.contains('active-item') && event.toElement.nodeName === 'BUTTON') {
     event.target.classList.remove('active-item');
     newOutfit.removeGarment(event.target.classList[0]);
-  } else if (event.target !== event.currentTarget) {
+  } else if (event.toElement.nodeName === 'BUTTON') {
+    console.log(event)
     newOutfit.removeGarment(event.target.classList[0]);
     newOutfit.addGarment({id: event.target.value, type: event.target.classList[0]});
   }
@@ -49,7 +46,7 @@ function selectItems() {
   displayImages();
 }
 
-function selectBackground() {
+function selectBackground(event) {
   if (event.target != event.currentTarget && event.target.classList.contains('active-item')) {
     newOutfit.background = null;
   } else if (event.target !== event.currentTarget) {
