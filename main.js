@@ -35,10 +35,8 @@ function displayImages() {
 
 function selectItems(event) {
   if (event.target.classList.contains('active-item') && event.toElement.nodeName === 'BUTTON') {
-    event.target.classList.remove('active-item');
     newOutfit.removeGarment(event.target.classList[0]);
   } else if (event.toElement.nodeName === 'BUTTON') {
-    console.log(event)
     newOutfit.removeGarment(event.target.classList[0]);
     newOutfit.addGarment({id: event.target.value, type: event.target.classList[0]});
   }
