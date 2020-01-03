@@ -61,8 +61,8 @@ function selectBackground() {
 
 function submitForm(event) {
   event.preventDefault();
-  displayOutfitCard();
   saveCardTitle();
+  displayOutfitCard();
   storeOutfit(newOutfit);
   resetPage();
 }
@@ -74,39 +74,31 @@ function checkFormValid() {
 };
 
 function resetPage() {
+  var outfitItems = document.querySelectorAll('.image-absolute');
+  var activeButtons = document.querySelectorAll('.active-item');
+  outfitItems.forEach(item => item.classList.add('hidden'));
+  activeButtons.forEach(button => button.classList.remove('active-item'));
   saveForm.reset();
   saveButton.setAttribute('disabled', "");
-  var outfitItems = document.querySelectorAll('.image-absolute');
-  for (var i = 0; i < outfitItems.length; i++) {
-    outfitItems[i].classList.add('hidden');
-  }
   newOutfit = new Outfit(Date.now(), null, [], null);
-  var activeButtons = document.querySelectorAll('.active-item');
-  for (var i = 0; i < activeButtons.length; i++) {
-    activeButtons[i].classList.remove('active-item');
-  }
 }
 
 function displayOutfitCard() {
-  var cardId = newOutfit.id;
-  var cardTitle = document.querySelector('.outfit-name-input-js').value;
   var savedOutfitsContainer = document.querySelector('.saved-outfits-container');
   savedOutfitsContainer.insertAdjacentHTML('beforeend',
-  `<div class="saved-outfit-card" id="${cardId}">
-    <p>${cardTitle}</p>
+  `<div class="saved-outfit-card" id="${newOutfit.id}">
+    <p>${newOutfit.title}</p>
     <i class="fas fa-times"></i>
   </div>`);
 };
 
 function loadOutfitCard() {
-  for (var i = 0; i < savedOutfits.length; i++) {
-    var savedOutfitsContainer = document.querySelector('.saved-outfits-container');
-    savedOutfitsContainer.insertAdjacentHTML('beforeend',
-    `<div class="saved-outfit-card" id="${savedOutfits[i].id}">
-      <p>${savedOutfits[i].title}</p>
-      <i class="fas fa-times"></i>
-    </div>`);
-  }
+var savedOutfitsContainer = document.querySelector('.saved-outfits-container');
+savedOutfits.forEach(outfit => savedOutfitsContainer.insertAdjacentHTML('beforeend',
+`<div class="saved-outfit-card" id="${outfit.id}">
+  <p>${outfit.title}</p>
+  <i class="fas fa-times"></i>
+</div>`))
 }
 
 function saveCardTitle() {
