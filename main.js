@@ -1,13 +1,13 @@
 var newOutfit = new Outfit(Date.now(), null, [], null);
 var buttonColumn = document.querySelector('.outfit-options');
-var backgroundOptions = document.querySelector('.background-button-container-js');
 var saveForm = document.querySelector('.save-outfit-form-js');
 var saveButton = document.querySelector('.save-outfit-button-js');
 var savedOutfitsContainer = document.querySelector('.saved-outfits-container-js');
 var savedOutfits = [];
 
-buttonColumn.addEventListener('click', selectItems)
-backgroundOptions.addEventListener('click', selectBackground);
+buttonColumn.addEventListener('click', selectItems);
+buttonColumn.addEventListener('click', displayActiveButtons);
+buttonColumn.addEventListener('click', displayImages);
 saveForm.addEventListener('submit', submitForm);
 saveForm.addEventListener('input', checkFormValid);
 savedOutfitsContainer.addEventListener('click', removeCard);
@@ -15,11 +15,24 @@ savedOutfitsContainer.addEventListener('click', removeCard);
 getOutfits();
 loadOutfitCard();
 
+function selectItems(event) {
+  if (event.target.classList[0] === 'background' && event.target.classList.contains('active-item')) {
+    newOutfit.background = null;
+  } else if (event.target.classList[0] === 'background') {
+    newOutfit.background = event.target.value;
+  } else if (event.target.classList.contains('active-item') && event.toElement.nodeName === 'BUTTON') {
+    newOutfit.removeGarment(event.target.classList[0]);
+  } else if (event.toElement.nodeName === 'BUTTON') {
+    newOutfit.removeGarment(event.target.classList[0]);
+    newOutfit.addGarment({id: event.target.value, type: event.target.classList[0]});
+  }
+}
+
 function displayActiveButtons() {
   var buttons = Array.prototype.slice.call(document.querySelectorAll('button'));
   var items = newOutfit.garments.map(garment => garment.id);
-  var background = newOutfit.background;
-  var matches = buttons.filter(button => items.find(item => item === button.value) || button.value === background);
+  items.push(newOutfit.background);
+  var matches = buttons.filter(button => items.find(item => item === button.value));
   buttons.forEach(button => button.classList.remove('active-item'));
   matches.forEach(match => match.classList.add('active-item'));
 }
@@ -31,27 +44,6 @@ function displayImages() {
   var matches = images.filter(image => items.find(item => item === image.id) || image.id === background);
   images.forEach(image => image.classList.add('hidden'));
   matches.forEach(match => match.classList.remove('hidden'));
-}
-
-function selectItems(event) {
-  if (event.target.classList.contains('active-item') && event.toElement.nodeName === 'BUTTON') {
-    newOutfit.removeGarment(event.target.classList[0]);
-  } else if (event.toElement.nodeName === 'BUTTON') {
-    newOutfit.removeGarment(event.target.classList[0]);
-    newOutfit.addGarment({id: event.target.value, type: event.target.classList[0]});
-  }
-  displayActiveButtons();
-  displayImages();
-}
-
-function selectBackground(event) {
-  if (event.target != event.currentTarget && event.target.classList.contains('active-item')) {
-    newOutfit.background = null;
-  } else if (event.target !== event.currentTarget) {
-    newOutfit.background = event.target.value;
-  }
-  displayActiveButtons();
-  displayImages();
 }
 
 function submitForm(event) {
@@ -69,17 +61,14 @@ function checkFormValid() {
 }
 
 function resetPage() {
-  var outfitItems = document.querySelectorAll('.image-absolute');
-  var activeButtons = document.querySelectorAll('.active-item');
-  outfitItems.forEach(item => item.classList.add('hidden'));
-  activeButtons.forEach(button => button.classList.remove('active-item'));
+  document.querySelectorAll('.image-absolute').forEach(item => item.classList.add('hidden'));
+  document.querySelectorAll('.active-item').forEach(button => button.classList.remove('active-item'));
   saveForm.reset();
   saveButton.setAttribute('disabled', "");
   newOutfit = new Outfit(Date.now(), null, [], null);
 }
 
 function displayOutfitCard() {
-  var savedOutfitsContainer = document.querySelector('.saved-outfits-container');
   savedOutfitsContainer.insertAdjacentHTML('beforeend',
   `<div class="saved-outfit-card" id="${newOutfit.id}">
     <p>${newOutfit.title}</p>
@@ -88,7 +77,6 @@ function displayOutfitCard() {
 }
 
 function loadOutfitCard() {
-var savedOutfitsContainer = document.querySelector('.saved-outfits-container');
 savedOutfits.forEach(outfit => savedOutfitsContainer.insertAdjacentHTML('beforeend',
 `<div class="saved-outfit-card" id="${outfit.id}">
   <p>${outfit.title}</p>
@@ -122,6 +110,6 @@ function removeCard() {
 }
 
 function clearOutfitCard(card) {
-  savedOutfits = savedOutfits.filter(outfit => outfit.id != card.id);
+  savedOutfits = savedOutfits.filter(outfit => outfit.id.toString() !== card.id);
   window.localStorage.setItem('outfits', JSON.stringify(savedOutfits));
 }
