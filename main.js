@@ -1,5 +1,5 @@
 var newOutfit = new Outfit(Date.now(), null, [], null);
-var buttonColumn = document.querySelector('.outfit-options');
+var buttonColumn = document.querySelector('.outfit-options-js');
 var saveForm = document.querySelector('.save-outfit-form-js');
 var saveButton = document.querySelector('.save-outfit-button-js');
 var savedOutfitsContainer = document.querySelector('.saved-outfits-container-js');
@@ -30,11 +30,10 @@ function displayItems() {
   var outfitItems = newOutfit.garments.map(garment => garment.id);
   outfitItems.push(newOutfit.background);
   var domMatches = domItems.filter(item => outfitItems.find(outfitItem => outfitItem === item.id));
-  var nonMatches = domItems.filter(item => !outfitItems.find(outfitItem => outfitItem === item.id));
-  nonMatches.forEach(item => 
-    item.localName === 'img' ? item.classList.add('hidden') : item.classList.remove('active-item'));
-  domMatches.forEach(item => 
-    item.localName === 'img' ? item.classList.remove('hidden') : item.classList.add('active-item'));
+  domItems.forEach(item => item.localName === 'img' ? 
+  item.classList.add('hidden') : item.classList.remove('active-item'));
+  domMatches.forEach(item => item.localName === 'img' ? 
+  item.classList.remove('hidden') : item.classList.add('active-item'));
 }
 
 function checkFormValidity() {
