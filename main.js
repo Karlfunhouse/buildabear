@@ -40,8 +40,8 @@ function displayActiveButtons() {
 function displayImages() {
   var images = Array.prototype.slice.call(document.querySelectorAll('.image-absolute'));
   var items = newOutfit.garments.map(garment => garment.id);
-  var background = newOutfit.background;
-  var matches = images.filter(image => items.find(item => item === image.id) || image.id === background);
+  items.push(newOutfit.background);
+  var matches = images.filter(image => items.find(item => item === image.id));
   images.forEach(image => image.classList.add('hidden'));
   matches.forEach(match => match.classList.remove('hidden'));
 }
