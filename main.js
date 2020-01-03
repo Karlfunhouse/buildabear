@@ -48,9 +48,8 @@ function displayImages() {
 
 function submitForm(event) {
   event.preventDefault();
-  saveCardTitle();
-  displayOutfitCard();
   storeOutfit(newOutfit);
+  displayOutfitCard();
   resetPage();
 }
 
@@ -61,8 +60,8 @@ function checkFormValid() {
 }
 
 function resetPage() {
-  document.querySelectorAll('.image-absolute').forEach(item => item.classList.add('hidden'));
-  document.querySelectorAll('.active-item').forEach(button => button.classList.remove('active-item'));
+  document.querySelectorAll('.image-absolute').forEach(image => image.classList.add('hidden'));
+  document.querySelectorAll('.active-item').forEach(item => item.classList.remove('active-item'));
   saveForm.reset();
   saveButton.setAttribute('disabled', "");
   newOutfit = new Outfit(Date.now(), null, [], null);
@@ -84,12 +83,8 @@ savedOutfits.forEach(outfit => savedOutfitsContainer.insertAdjacentHTML('beforee
 </div>`))
 }
 
-function saveCardTitle() {
-  var cardTitle = document.querySelector('.outfit-name-input-js').value;
-  newOutfit.title = cardTitle;
-}
-
 function storeOutfit(outfit) {
+  newOutfit.title = document.querySelector('.outfit-name-input-js').value;
   savedOutfits.push(outfit);
   window.localStorage.setItem('outfits', JSON.stringify(savedOutfits));
 }
