@@ -16,10 +16,8 @@ getOutfits();
 loadOutfitCard();
 
 function selectItems(event) {
-  if (event.target.classList[0] === 'background' && event.target.classList.contains('active-item')) {
-    newOutfit.background = null;
-  } else if (event.target.classList[0] === 'background') {
-    newOutfit.background = event.target.value;
+  if (event.target.classList[0] === 'background') {
+    newOutfit.changeBackground(event.target.value);
   } else if (event.target.classList.contains('active-item') && event.toElement.nodeName === 'BUTTON') {
     newOutfit.removeGarment(event.target.classList[0]);
   } else if (event.toElement.nodeName === 'BUTTON') {
@@ -99,7 +97,7 @@ function getOutfits() {
 function removeCard() {
   var outfitCard = event.target.parentNode;
   if (event.target.classList.contains('fa-times')) {
-    event.target.parentNode.parentNode.removeChild(event.target.parentNode)
+    event.target.parentNode.parentNode.removeChild(event.target.parentNode);
     clearOutfitCard(outfitCard);
   }
 }

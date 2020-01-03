@@ -15,4 +15,11 @@ class Outfit {
       this.garments = this.garments.filter(item => item.id != removedItem.id)
     }
   }
+  changeBackground(background) {
+    if (this.background === background) {
+      this.background = null;
+    } else {
+      this.background = background;
+    }
+  }
 }
