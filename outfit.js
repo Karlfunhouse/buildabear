@@ -6,7 +6,7 @@ class Outfit {
     this.background = background;
   }
 
-  addGarment(garment, type) {
+  addGarment(garment) {
     this.garments.push(garment);
   }
   removeGarment(type) {
