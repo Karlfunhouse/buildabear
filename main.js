@@ -47,7 +47,7 @@ function selectItems() {
   }
   displayActiveButtons();
   displayImages();
-};
+}
 
 function selectBackground() {
   if (event.target != event.currentTarget && event.target.classList.contains('active-item')) {
@@ -57,7 +57,7 @@ function selectBackground() {
   }
   displayActiveButtons();
   displayImages();
-};
+}
 
 function submitForm(event) {
   event.preventDefault();
@@ -71,7 +71,7 @@ function checkFormValid() {
   if (saveForm.checkValidity() === true) {
     saveButton.removeAttribute('disabled');
   }
-};
+}
 
 function resetPage() {
   var outfitItems = document.querySelectorAll('.image-absolute');
@@ -90,7 +90,7 @@ function displayOutfitCard() {
     <p>${newOutfit.title}</p>
     <i class="fas fa-times"></i>
   </div>`);
-};
+}
 
 function loadOutfitCard() {
 var savedOutfitsContainer = document.querySelector('.saved-outfits-container');
