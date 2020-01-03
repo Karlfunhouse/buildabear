@@ -7,12 +7,12 @@ var savedOutfits = [];
 
 buttonColumn.addEventListener('click', selectItems);
 buttonColumn.addEventListener('click', displayItems);
+saveForm.addEventListener('input', checkFormValidity);
 saveForm.addEventListener('submit', submitForm);
-saveForm.addEventListener('input', checkFormValid);
-savedOutfitsContainer.addEventListener('click', removeCard);
+savedOutfitsContainer.addEventListener('click', removeCardFromDisplay);
 
-getOutfits();
-loadOutfitCard();
+getOutfitsFromStorage();
+displayLoadedOutfits();
 
 function selectItems(event) {
   if (event.target.classList[0] === 'background') {
@@ -37,28 +37,26 @@ function displayItems() {
     item.localName === 'img' ? item.classList.remove('hidden') : item.classList.add('active-item'));
 }
 
+function checkFormValidity() {
+  saveForm.checkValidity() === true ? 
+  saveButton.removeAttribute('disabled') : saveButton.setAttribute('disabled', '');
+}
+
 function submitForm(event) {
   event.preventDefault();
   storeOutfit(newOutfit);
-  displayOutfitCard();
+  displayNewOutfitCard();
   resetPage();
-}
-
-function checkFormValid() {
-  if (saveForm.checkValidity() === true) {
-    saveButton.removeAttribute('disabled');
-  }
+  checkFormValidity();
 }
 
 function resetPage() {
-  document.querySelectorAll('.image-absolute').forEach(image => image.classList.add('hidden'));
-  document.querySelectorAll('.active-item').forEach(item => item.classList.remove('active-item'));
   saveForm.reset();
-  saveButton.setAttribute('disabled', "");
   newOutfit = new Outfit(Date.now(), null, [], null);
+  displayItems();
 }
 
-function displayOutfitCard() {
+function displayNewOutfitCard() {
   savedOutfitsContainer.insertAdjacentHTML('beforeend',
   `<div class="saved-outfit-card" id="${newOutfit.id}">
     <p>${newOutfit.title}</p>
@@ -66,12 +64,12 @@ function displayOutfitCard() {
   </div>`);
 }
 
-function loadOutfitCard() {
+function displayLoadedOutfits() {
   savedOutfits.forEach(outfit => savedOutfitsContainer.insertAdjacentHTML('beforeend',
   `<div class="saved-outfit-card" id="${outfit.id}">
     <p>${outfit.title}</p>
     <i class="fas fa-times"></i>
-  </div>`))
+  </div>`));
 }
 
 function storeOutfit(outfit) {
@@ -80,20 +78,20 @@ function storeOutfit(outfit) {
   window.localStorage.setItem('outfits', JSON.stringify(savedOutfits));
 }
 
-function getOutfits() {
+function getOutfitsFromStorage() {
   var outfitKey = JSON.parse(localStorage.getItem('outfits'));
   outfitKey.forEach(outfit => savedOutfits.push(outfit));
 }
 
-function removeCard() {
+function removeCardFromDisplay() {
   var outfitCard = event.target.parentNode;
   if (event.target.classList.contains('fa-times')) {
     event.target.parentNode.parentNode.removeChild(event.target.parentNode);
-    clearOutfitCard(outfitCard);
+    removeCardFromStorage(outfitCard);
   }
 }
 
-function clearOutfitCard(card) {
-  savedOutfits = savedOutfits.filter(outfit => outfit.id.toString() !== card.id);
+function removeCardFromStorage(item) {
+  savedOutfits = savedOutfits.filter(outfit => outfit.id.toString() !== item.id);
   window.localStorage.setItem('outfits', JSON.stringify(savedOutfits));
 }
