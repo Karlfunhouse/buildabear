@@ -5,7 +5,7 @@ var saveButton = document.querySelector('.save-outfit-button-js');
 var savedOutfitsContainer = document.querySelector('.saved-outfits-container-js');
 var savedOutfits = [];
 
-buttonColumn.addEventListener('click', getButtonValue);
+buttonColumn.addEventListener('click', getItem);
 saveForm.addEventListener('input', checkFormValidity);
 saveForm.addEventListener('submit', submitForm);
 savedOutfitsContainer.addEventListener('click', removeCardFromDisplay);
@@ -13,14 +13,14 @@ savedOutfitsContainer.addEventListener('click', removeCardFromDisplay);
 getOutfitsFromStorage();
 displayLoadedOutfits();
 
-function getButtonValue() {
+function getItem() {
   if (event.target.localName === 'button') {
     var displayItem = new DisplayItem(
       event.target.value, 
       event.target.classList[0]
       );
 
-    displayItem.getItemType(); 
+    displayItem.updateDOM(); 
   }
 }
 
