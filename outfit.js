@@ -21,4 +21,10 @@ class Outfit {
   background.imageId.classList.remove('hidden');
   background.buttonId.classList.add('active-item');
  }
+ removeBackground() {
+  this.background.buttonId.classList.remove('active-item');
+  this.background.imageId.classList.add('hidden');
+  this.background = null;
+ }
+
 }
