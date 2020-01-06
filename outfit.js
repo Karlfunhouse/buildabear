@@ -5,5 +5,9 @@ class Outfit {
   this.garments = garments;
   this.background = background;
  }
- addGarment() {
+ addGarment(garment) {
+  this.garments.push(garment);
+  garment.imageId.classList.remove('hidden');
+  garment.buttonId.classList.add('active-item');
+  }
 }
