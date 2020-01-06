@@ -8,15 +8,15 @@ var savedOutfits = [];
 buttonColumn.addEventListener('click', getItem);
 saveForm.addEventListener('input', checkFormValidity);
 saveForm.addEventListener('submit', submitForm);
-savedOutfitsContainer.addEventListener('click', removeCardFromDisplay);
+savedOutfitsContainer.addEventListener('click', removeSavedCard);
 
 getOutfitsFromStorage();
 displayLoadedOutfits();
 
-function getItem() {
+function getItem(event) {
   if (event.target.localName === 'button') {
-    var displayItem = new DisplayItem(event.target.value, event.target.classList[0]);
-    displayItem.updateDOM(); 
+    var displayItem = new DisplayItem(event);
+    displayItem.update(); 
   }
 }
 
@@ -30,13 +30,12 @@ function submitForm(event) {
   storeOutfit(newOutfit);
   displayNewOutfitCard();
   resetPage();
-  checkFormValidity();
 }
 
 function resetPage() {
   saveForm.reset();
-  newOutfit = new Outfit(Date.now(), null, [], null);
-  displayItems();
+  checkFormValidity();
+  newOutfit.reset();
 }
 
 function displayNewOutfitCard() {
@@ -56,7 +55,7 @@ function displayLoadedOutfits() {
 }
 
 function storeOutfit(outfit) {
-  newOutfit.title = document.querySelector('.outfit-name-input-js').value;
+  outfit.title = document.querySelector('.outfit-name-input-js').value;
   savedOutfits.push(outfit);
   window.localStorage.setItem('outfits', JSON.stringify(savedOutfits));
 }
@@ -66,15 +65,11 @@ function getOutfitsFromStorage() {
   outfitKey.forEach(outfit => savedOutfits.push(outfit));
 }
 
-function removeCardFromDisplay() {
-  var outfitCard = event.target.parentNode;
+function removeSavedCard() {
   if (event.target.classList.contains('fa-times')) {
+    var outfitCard = event.target.parentNode;
     event.target.parentNode.parentNode.removeChild(event.target.parentNode);
-    removeCardFromStorage(outfitCard);
+    savedOutfits = savedOutfits.filter(outfit => outfit.id.toString() !== outfitCard.id);
+    window.localStorage.setItem('outfits', JSON.stringify(savedOutfits));
   }
-}
-
-function removeCardFromStorage(item) {
-  savedOutfits = savedOutfits.filter(outfit => outfit.id.toString() !== item.id);
-  window.localStorage.setItem('outfits', JSON.stringify(savedOutfits));
 }
