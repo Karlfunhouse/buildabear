@@ -16,6 +16,7 @@ displayLoadedOutfits();
 function getItem(event) {
   if (event.target.localName === 'button') {
     var displayItem = new DisplayItem(event);
+    console.log(displayItem)
     displayItem.update(); 
   }
 }
