@@ -1,17 +1,8 @@
-var newOutfit = new Outfit(Date.now(), null, [], null);
-var hatOptions = document.querySelector('.hat-button-container-js');
-var clothesOptions = document.querySelector('.clothes-button-container-js');
-var accessoriesOptions = document.querySelector('.accessories-button-container-js');
-var backgroundOptions = document.querySelector('.background-button-container-js');
 var saveForm = document.querySelector('.save-outfit-form-js');
 var saveButton = document.querySelector('.save-outfit-button-js');
 var savedOutfitsContainer = document.querySelector('.saved-outfits-container-js');
 var savedOutfits = [];
 
-hatOptions.addEventListener('click', selectHat);
-clothesOptions.addEventListener('click', selectClothes);
-accessoriesOptions.addEventListener('click', selectAccessories);
-backgroundOptions.addEventListener('click', selectBackground);
 saveForm.addEventListener('submit', submitForm);
 saveForm.addEventListener('input', checkFormValid);
 savedOutfitsContainer.addEventListener('click', removeCard);
