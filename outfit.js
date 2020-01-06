@@ -8,18 +8,32 @@ class Outfit {
 
   addGarment(garment) {
     this.garments.push(garment);
+    garment.imageId.classList.remove('hidden');
   }
-  removeGarment(type) {
-    var removedItem = this.garments.find(item => item.type === type);
-    if (removedItem != undefined) {
-      this.garments = this.garments.filter(item => item.id != removedItem.id)
-    }
+  removeGarment(garment) {
+    var removedItem = this.garments.find(item => item.type === garment.type);
+    this.garments = this.garments.filter(item => item.id != removedItem.id);
+    garment.imageId.classList.add('hidden');
   }
-  changeBackground(background) {
-    if (this.background === background) {
+  addBackground(background) {
+    this.background = background;
+    background.imageId.classList.remove('hidden');
+  }
+  removeBackground() {
+    this.background.imageId.classList.add('hidden');
+    this.background = null;
+  }
+  changeBackground(newBackground) {
+    if (this.background === null) {
+      this.background = newBackground;
+      newBackground.imageId.classList.remove('hidden');
+    } else if (newBackground.id === this.background.id) {
       this.background = null;
+      newBackground.imageId.classList.add('hidden');
     } else {
-      this.background = background;
+      this.background.imageId.classList.add('hidden');
+      this.background = newBackground;
+      newBackground.imageId.classList.remove('hidden');
     }
   }
 }
