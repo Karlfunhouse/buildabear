@@ -15,11 +15,7 @@ displayLoadedOutfits();
 
 function getItem() {
   if (event.target.localName === 'button') {
-    var displayItem = new DisplayItem(
-      event.target.value, 
-      event.target.classList[0]
-      );
-
+    var displayItem = new DisplayItem(event.target.value, event.target.classList[0]);
     displayItem.updateDOM(); 
   }
 }

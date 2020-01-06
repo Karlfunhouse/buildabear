@@ -23,17 +23,4 @@ class Outfit {
     this.background.imageId.classList.add('hidden');
     this.background = null;
   }
-  changeBackground(newBackground) {
-    if (this.background === null) {
-      this.background = newBackground;
-      newBackground.imageId.classList.remove('hidden');
-    } else if (newBackground.id === this.background.id) {
-      this.background = null;
-      newBackground.imageId.classList.add('hidden');
-    } else {
-      this.background.imageId.classList.add('hidden');
-      this.background = newBackground;
-      newBackground.imageId.classList.remove('hidden');
-    }
-  }
 }
