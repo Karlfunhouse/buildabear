@@ -56,7 +56,7 @@ function searchOutfit() {
 }
 
 function findMatches(searchVal, cardsArray) {
-  return cardsArray.filter(item => item.innerText.includes(`${searchVal}`));
+  return cardsArray.filter(item => item.innerText.startsWith(`${searchVal}`));
 }
 
 function displayNewOutfitCard() {
