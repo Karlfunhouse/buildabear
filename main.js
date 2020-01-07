@@ -35,13 +35,28 @@ function submitForm(event) {
 }
 
 function searchOutfit() {
-  var savedOutfitCards = document.querySelectorAll('.saved-outfit-card')
+  var savedOutfitCards = Array.prototype.slice.call(
+    document.querySelectorAll('.saved-outfit-card'));
+
+  console.log(savedOutfitCards);
+
+  var inputVal = outfitSearchField.value;
+  var matches = findMatches(inputVal, savedOutfitCards);
+
   savedOutfitCards.forEach(card => card.classList.remove('flex'))
   savedOutfitCards.forEach(card => card.classList.add('hidden'))
+
+  matches.forEach(card => card.classList.add('flex'))
+  matches.forEach(card => card.classList.remove('hidden'))
+
   if (outfitSearchField.value.length === 0) {
     savedOutfitCards.forEach(card => card.classList.add('flex'))
     savedOutfitCards.forEach(card => card.classList.remove('hidden'))
   }
+}
+
+function findMatches(searchVal, cardsArray) {
+  return cardsArray.filter(item => item.innerText.includes(`${searchVal}`));
 }
 
 function displayNewOutfitCard() {
