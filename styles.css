@@ -15,8 +15,26 @@ label {
   font-family: sanchez;
 }
 
-p {
+}
+p,
+label {
   font-family: overpass;
+}
+
+label {
+  font-style: italic;
+  font-family: overpass;
+  align-self: flex-start;
+  font-size: 0.75em;
+  margin-bottom: 0.75em;
+  opacity: 50%;
+}
+
+.input-wrapper {
+  display: flex;
+  width: 80%;
+  flex-direction: column;
+  align-items: center;
 }
 
 header {  height: 10vh;
@@ -80,21 +98,6 @@ button {
   width: 30%;
 }
 
-.hat-options {
-}
-
-.clothes-options {
-}
-
-.accessories-options {
-}
-
-.background-options {
-}
-
-.button-container {
-}
-
 .active-item {
   background-color: #B44127;
 }
@@ -138,9 +141,10 @@ button {
   z-index: 1;
 }
 
-.outfit-name-input {
+.outfit-name-input,
+#outfit-search {
   font-size: 1em;
-  width: 65%;
+  width: 100%;
   padding: 1%;
   margin: 2.5% 0;
 }
@@ -165,14 +169,22 @@ button {
 
 .saved-outfits {
   width: 30%;
+  align-items: center;
 }
 
 .saved-outfits h2 {
   text-align: center;
   width: 90%;
   margin: 0 auto;
-  margin-bottom: 10%;
+  margin-bottom: 5%;
 }
+
+/* #outfit-search {
+  font-size: 1em;
+  width: 65%;
+  padding: 1%;
+  margin-bottom: 5%;
+} */
 
 .saved-outfits-container {
   width: 90%;
@@ -184,7 +196,6 @@ button {
   background-color: WHITE;
   border: 1px solid #73412f;
   border-radius: 3px;
-  display: flex;
   justify-content: space-between;
   padding: 2.5%;
   margin: 5% 0;
@@ -203,4 +214,8 @@ button {
 
 .outfit-card h2 {
   margin-bottom: 2.5%;
+}
+
+.flex {
+  display: flex;
 }
