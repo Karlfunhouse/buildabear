@@ -4,11 +4,13 @@ var saveForm = document.querySelector('.save-outfit-form-js');
 var saveButton = document.querySelector('.save-outfit-button-js');
 var savedOutfitsContainer = document.querySelector('.saved-outfits-container-js');
 var savedOutfits = [];
+var outfitSearchField = document.querySelector('#outfit-search');
 
 buttonColumn.addEventListener('click', getItem);
 saveForm.addEventListener('input', checkFormValidity);
 saveForm.addEventListener('submit', submitForm);
 savedOutfitsContainer.addEventListener('click', updateCardSection);
+outfitSearchField.addEventListener('input', searchOutfit)
 
 getOutfitsFromStorage();
 displayLoadedOutfitCards();
@@ -32,9 +34,19 @@ function submitForm(event) {
   newOutfit.reset();
 }
 
+function searchOutfit() {
+  var savedOutfitCards = document.querySelectorAll('.saved-outfit-card')
+  savedOutfitCards.forEach(card => card.classList.remove('flex'))
+  savedOutfitCards.forEach(card => card.classList.add('hidden'))
+  if (outfitSearchField.value.length === 0) {
+    savedOutfitCards.forEach(card => card.classList.add('flex'))
+    savedOutfitCards.forEach(card => card.classList.remove('hidden'))
+  }
+}
+
 function displayNewOutfitCard() {
   savedOutfitsContainer.insertAdjacentHTML('beforeend',
-  `<div class="saved-outfit-card" data-id="${newOutfit.id}">
+  `<div class="saved-outfit-card flex" data-id="${newOutfit.id}">
     <p data-id="${newOutfit.id}">${newOutfit.title}</p>
     <i class="fas fa-times"></i>
   </div>`);
@@ -42,7 +54,7 @@ function displayNewOutfitCard() {
 
 function displayLoadedOutfitCards() {
   savedOutfits.forEach(outfit => savedOutfitsContainer.insertAdjacentHTML('beforeend',
-  `<div class="saved-outfit-card" data-id="${outfit.id}">
+  `<div class="saved-outfit-card flex" data-id="${outfit.id}">
     <p data-id="${outfit.id}">${outfit.title}</p>
     <i class="fas fa-times"></i>
   </div>`));
