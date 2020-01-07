@@ -7,10 +7,11 @@
 }
 
 body {
-  background-color: #f2f2e9;
+  background-color: white;
 }
 
-h2 {
+h2,
+label {
   font-family: sanchez;
 }
 
@@ -29,7 +30,7 @@ header {  height: 10vh;
 }
 
 main {
-  background-color: #f2f2e9;
+  background-color: white;
   width: 100%;
   height: 87.5vh;
   display: flex;
@@ -43,7 +44,7 @@ button {
   font-size: 1em;
   border-radius: 3px;
   font-family: overpass;
-  background-color: #d6644b;
+  background-color: #401F20;
   color: white;
   outline: none;
 }
@@ -95,7 +96,7 @@ button {
 }
 
 .active-item {
-  background-color: blue;
+  background-color: #B44127;
 }
 
 /* Middle column styling (bear display) */
