@@ -196,7 +196,6 @@ button {
   background-color: WHITE;
   border: 1px solid #73412f;
   border-radius: 3px;
-  display: flex;
   justify-content: space-between;
   padding: 2.5%;
   margin: 5% 0;
@@ -215,4 +214,8 @@ button {
 
 .outfit-card h2 {
   margin-bottom: 2.5%;
+}
+
+.flex {
+  display: flex;
 }
