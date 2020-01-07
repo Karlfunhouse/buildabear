@@ -74,13 +74,19 @@
           <img src="./assets/dancefloor.jpg" class="image-absolute image-background hidden js-data" id="dancefloor">
         </section>
         <form class="save-outfit-form save-outfit-form-js flex-column" return='false'>
-          <label for="save-outfit">Name your outfit!</label>
-          <input id="save-outfit" type="text" class="outfit-name-input outfit-name-input-js" minlength="3" required>
+          <div class="input-wrapper">
+            <input id="save-outfit" type="text" class="outfit-name-input outfit-name-input-js" minlength="3" required>
+            <label for="save-outfit">Name your outfit!</label>
+          </div>
           <button type="submit" class="save-outfit-button save-outfit-button-js" disabled>SAVE</button>
         </form>
       </section>
       <section class="saved-outfits flex-column">
         <h2>Saved Outfits</h2>
+        <div class="input-wrapper">
+          <input type="text" id="outfit-search">
+          <label for="outfit-search">Search your saved outfits!</label>
+        </div>
         <div class="saved-outfits-container saved-outfits-container-js">
         </div>
       </section>
