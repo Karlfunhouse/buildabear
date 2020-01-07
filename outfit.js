@@ -50,7 +50,7 @@ class Outfit {
 getDOMElements(outfit) {
     outfit.garments.forEach(item => item.buttonId = document.querySelector(`button[value=${item.id}]`));
     outfit.garments.forEach(item => item.imageId = document.getElementById(`${item.id}`));
-  
+
     if (outfit.background !== null) {
       outfit.background.imageId = document.getElementById(`${outfit.background.id}`);
       outfit.background.buttonId = document.querySelector(`button[value=${outfit.background.id}]`);
@@ -65,7 +65,7 @@ reset() {
     saveForm.reset();
     checkFormValidity();
 }
-storeOutfit() {
+store() {
     if (savedOutfits.find(outfit => outfit.title === this.title) === undefined) {
         this.storeNewOutfit();
     } else {

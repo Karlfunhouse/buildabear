@@ -11,7 +11,7 @@ saveForm.addEventListener('submit', submitForm);
 savedOutfitsContainer.addEventListener('click', updateCardSection);
 
 getOutfitsFromStorage();
-displayLoadedOutfits();
+displayLoadedOutfitCards();
 
 function getItem(event) {
   if (event.target.localName === 'button') {
@@ -22,13 +22,13 @@ function getItem(event) {
 
 function checkFormValidity() {
   saveForm.checkValidity() === true ?
-  saveButton.removeAttribute('disabled') : 
+  saveButton.removeAttribute('disabled') :
   saveButton.setAttribute('disabled', '');
 }
 
 function submitForm(event) {
   event.preventDefault();
-  newOutfit.storeOutfit();
+  newOutfit.store();
   newOutfit.reset();
 }
 
@@ -40,7 +40,7 @@ function displayNewOutfitCard() {
   </div>`);
 }
 
-function displayLoadedOutfits() {
+function displayLoadedOutfitCards() {
   savedOutfits.forEach(outfit => savedOutfitsContainer.insertAdjacentHTML('beforeend',
   `<div class="saved-outfit-card" data-id="${outfit.id}">
     <p data-id="${outfit.id}">${outfit.title}</p>
