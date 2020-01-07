@@ -66,6 +66,7 @@ reset() {
     checkFormValidity();
 }
 store() {
+    this.title = document.querySelector('.outfit-name-input-js').value;
     if (savedOutfits.find(outfit => outfit.title === this.title) === undefined) {
         this.storeNewOutfit();
     } else {
@@ -73,7 +74,7 @@ store() {
     }
 }
 storeNewOutfit() {
-    this.title = document.querySelector('.outfit-name-input-js').value;
+    this.id = Date.now();
     savedOutfits.push(this);
     displayNewOutfitCard();
     window.localStorage.setItem('outfits', JSON.stringify(savedOutfits));
