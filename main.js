@@ -9,6 +9,7 @@ buttonColumn.addEventListener('click', getItem);
 saveForm.addEventListener('input', checkFormValidity);
 saveForm.addEventListener('submit', submitForm);
 savedOutfitsContainer.addEventListener('click', removeSavedCard);
+savedOutfitsContainer.addEventListener('click', loadOutfitFromCard);
 getOutfitsFromStorage();
 displayLoadedOutfits();
 
@@ -32,23 +33,27 @@ function submitForm(event) {
 }
 
 function resetPage() {
+  newOutfit = new Outfit(Date.now(), null, [], null);
+  var images = document.querySelectorAll('.image-absolute');
+  var activeButtons = document.querySelectorAll('.active-item');
+  images.forEach(image => image.classList.add('hidden'))
+  activeButtons.forEach(button => button.classList.remove('active-item'));
   saveForm.reset();
   checkFormValidity();
-  newOutfit.reset();
 }
 
 function displayNewOutfitCard() {
   savedOutfitsContainer.insertAdjacentHTML('beforeend',
-  `<div class="saved-outfit-card" id="${newOutfit.id}">
-    <p>${newOutfit.title}</p>
+  `<div class="saved-outfit-card" data-id="${newOutfit.id}">
+    <p data-id="${newOutfit.id}">${newOutfit.title}</p>
     <i class="fas fa-times"></i>
   </div>`);
 }
 
 function displayLoadedOutfits() {
   savedOutfits.forEach(outfit => savedOutfitsContainer.insertAdjacentHTML('beforeend',
-  `<div class="saved-outfit-card" id="${outfit.id}">
-    <p>${outfit.title}</p>
+  `<div class="saved-outfit-card" data-id="${outfit.id}">
+    <p data-id="${outfit.id}">${outfit.title}</p>
     <i class="fas fa-times"></i>
   </div>`));
 }
@@ -56,6 +61,7 @@ function displayLoadedOutfits() {
 function storeOutfit(outfit) {
   outfit.title = document.querySelector('.outfit-name-input-js').value;
   savedOutfits.push(outfit);
+  console.log(savedOutfits)
   window.localStorage.setItem('outfits', JSON.stringify(savedOutfits));
 }
 
@@ -70,5 +76,19 @@ function removeSavedCard() {
     event.target.parentNode.parentNode.removeChild(event.target.parentNode);
     savedOutfits = savedOutfits.filter(outfit => outfit.id.toString() !== outfitCard.id);
     window.localStorage.setItem('outfits', JSON.stringify(savedOutfits));
+  }
+}
+
+function loadOutfitFromCard() {
+  if (!event.target.classList.contains('fa-times') && event.target !== event.currentTarget) {
+    var loadedOutfit = savedOutfits.find
+    (item => item.id.toString() === event.target.dataset.id);
+
+    loadedOutfit.garments.forEach(item => item.imageId = document.getElementById(`${item.id}`));
+
+    // get all the buttons and re-attach them to the display items
+    // then, run addGarment on each display item
+
+    console.log(loadedOutfit)
   }
 }
