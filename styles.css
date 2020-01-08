@@ -58,19 +58,25 @@ main {
 
 button {
   padding: 1.5% 5%;
-  margin: .5%;
+  margin: 1%;
   font-size: 1em;
   border-radius: 3px;
   font-family: overpass;
   background-color: #401F20;
   color: white;
   outline: none;
+  border: none;
 }
 
-/* button:hover {
-  background-color: #f29f05;
-  background-color: #B44127;
-} */
+
+button:enabled:hover {
+  /* background-color: #f29f05;
+  background-color: #B44127; */
+  box-shadow: 3px 2px 5px rgba(0, 0, 0, 0.5);
+  border: none;
+  animation-name: hover-transition;
+  animation-duration: 300ms;
+}
 
 .button-active-js {
   background-color: #f29f05
@@ -100,6 +106,8 @@ button {
 
 .active-item {
   background-color: #B44127;
+  box-shadow: 3px 2px 5px rgba(0, 0, 0, 0.5);
+  border: none;
 }
 
 /* Middle column styling (bear display) */
@@ -240,5 +248,13 @@ button {
 @media only screen and (max-width: 550px) {
   main {
     padding: 0 0;
+  }
+}
+
+@keyframes hover-transition {
+  from {
+    box-shadow: none;
+  } to {
+    box-shadow: 3px 2px 5px rgba(0, 0, 0, 0.5);
   }
 }
