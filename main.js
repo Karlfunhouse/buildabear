@@ -2,6 +2,7 @@ var newOutfit = new Outfit(Date.now(), null, [], null);
 var buttonColumn = document.querySelector('.outfit-options-js');
 var saveForm = document.querySelector('.save-outfit-form-js');
 var saveButton = document.querySelector('.save-outfit-button-js');
+var savedOutfitsColumn = document.querySelector('.saved-outfits-js')
 var savedOutfitsContainer = document.querySelector('.saved-outfits-container-js');
 var savedOutfits = [];
 var outfitSearchField = document.querySelector('#outfit-search');
@@ -9,11 +10,29 @@ var outfitSearchField = document.querySelector('#outfit-search');
 buttonColumn.addEventListener('click', getItem);
 saveForm.addEventListener('input', checkFormValidity);
 saveForm.addEventListener('submit', submitForm);
+savedOutfitsColumn.addEventListener('click', closeBanner)
 savedOutfitsContainer.addEventListener('click', updateCardSection);
-outfitSearchField.addEventListener('input', searchOutfit)
+outfitSearchField.addEventListener('input', searchOutfit);
 
 getOutfitsFromStorage();
 displayLoadedOutfitCards();
+toggleBanner();
+
+function toggleBanner() {
+  var banner = document.querySelector('.no-saved-outfits-banner')
+  if (savedOutfitsContainer.children.length === 0) {
+    banner.classList.remove('hidden');
+  } else if (!banner.classList.contains('hidden')) {
+    banner.classList.add('hidden');
+  }
+}
+
+function closeBanner() {
+  var banner = document.querySelector('.no-saved-outfits-banner')
+  if (event.target.classList.contains('no-outfit-close')) {
+    banner.classList.add('hidden');
+  }
+}
 
 function getItem(event) {
   if (event.target.localName === 'button') {
@@ -32,6 +51,7 @@ function submitForm(event) {
   event.preventDefault();
   newOutfit.store();
   newOutfit.reset();
+  toggleBanner();
 }
 
 function searchOutfit() {
