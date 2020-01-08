@@ -81,11 +81,16 @@
           <button type="submit" class="save-outfit-button save-outfit-button-js" disabled>SAVE</button>
         </form>
       </section>
-      <section class="saved-outfits flex-column">
+      <section class="saved-outfits saved-outfits-js flex-column">
         <h2>Saved Outfits</h2>
         <div class="input-wrapper">
           <input type="text" id="outfit-search">
           <label for="outfit-search">Search your saved outfits!</label>
+        </div>
+        <div class="no-saved-outfits-banner hidden">
+          <p>You don't have any saved outfits.</p>
+          <p>It's time to dress up your first bear!</p>
+          <i class="fas fa-times no-outfit-close"></i>
         </div>
         <div class="saved-outfits-container saved-outfits-container-js">
         </div>

@@ -77,6 +77,14 @@ button:enabled:hover {
   cursor: pointer;
 }
 
+@keyframes hover-transition {
+  from {
+    box-shadow: none;
+    } to {
+      box-shadow: 3px 2px 5px rgba(0, 0, 0, 0.5);
+    }
+  }
+
 .button-active-js {
   background-color: #f29f05;
 }
@@ -224,6 +232,24 @@ button:enabled:hover {
   margin-bottom: 2.5%;
 }
 
+.no-saved-outfits-banner {
+  border: 3px solid black;
+  border-radius: 5px;
+  padding: 2% 4%;
+  margin: 2% 0;
+  font-size: .8em;
+  width: 80%;
+  text-align: center;
+  position: relative;
+  font-family: overpass;
+}
+.no-outfit-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 5%;
+}
+
 .flex {
   display: flex;
 }
@@ -243,12 +269,10 @@ button:enabled:hover {
   animation-name: cardSlide;
   animation-duration: 400ms;
   animation-timing-function: cubic-bezier(0.02, 1.09, 0.7, 1.03);
-=======
-::placeholder {
-  opacity: 40%;
 }
 
-.saved-outfit-card:hover {
+.saved-outfit-card:hover,
+.no-outfit-close:hover {
   cursor: pointer;
 }
 
@@ -272,13 +296,5 @@ button:enabled:hover {
 @media only screen and (max-width: 550px) {
   main {
     padding: 0 0;
-  }
-}
-
-@keyframes hover-transition {
-  from {
-    box-shadow: none;
-  } to {
-    box-shadow: 3px 2px 5px rgba(0, 0, 0, 0.5);
   }
 }
