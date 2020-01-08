@@ -61,7 +61,7 @@ function findMatches(searchVal, cardsArray) {
 
 function displayNewOutfitCard() {
   savedOutfitsContainer.insertAdjacentHTML('beforeend',
-  `<div class="saved-outfit-card flex" data-id="${newOutfit.id}">
+  `<div class="saved-outfit-card flex card-slide" data-id="${newOutfit.id}">
     <p data-id="${newOutfit.id}">${newOutfit.title}</p>
     <i class="fas fa-times"></i>
   </div>`);
@@ -69,7 +69,7 @@ function displayNewOutfitCard() {
 
 function displayLoadedOutfitCards() {
   savedOutfits.forEach(outfit => savedOutfitsContainer.insertAdjacentHTML('beforeend',
-  `<div class="saved-outfit-card flex" data-id="${outfit.id}">
+  `<div class="saved-outfit-card flex card-slide" data-id="${outfit.id}">
     <p data-id="${outfit.id}">${outfit.title}</p>
     <i class="fas fa-times"></i>
   </div>`));
