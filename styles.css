@@ -58,22 +58,27 @@ main {
 
 button {
   padding: 1.5% 5%;
-  margin: .5%;
+  margin: 1%;
   font-size: 1em;
   border-radius: 3px;
   font-family: overpass;
   background-color: #401F20;
   color: white;
   outline: none;
+  border: none;
 }
 
-/* button:hover {
-  background-color: #f29f05;
-  background-color: #B44127;
-} */
+
+button:enabled:hover {
+  box-shadow: 3px 2px 5px rgba(0, 0, 0, 0.5);
+  border: none;
+  animation-name: hover-transition;
+  animation-duration: 300ms;
+  cursor: pointer;
+}
 
 .button-active-js {
-  background-color: #f29f05
+  background-color: #f29f05;
 }
 
 /* Global classes for re-use  */
@@ -100,6 +105,10 @@ button {
 
 .active-item {
   background-color: #B44127;
+  box-shadow: 3px 2px 5px rgba(0, 0, 0, 0.5);
+  border: none;
+  animation-name: hover-transition;
+  animation-duration: 0ms;
 }
 
 /* Middle column styling (bear display) */
@@ -156,7 +165,6 @@ button {
 .save-outfit-button {
   background-color: #57aec1;
   color: white;
-  cursor: pointer;
 }
 
 .save-outfit-button:disabled {
@@ -218,4 +226,45 @@ button {
 
 .flex {
   display: flex;
+}
+
+::placeholder {
+  opacity: 40%;
+}
+
+.saved-outfit-card:hover {
+  cursor: pointer;
+}
+
+
+
+@media only screen and (max-width: 800px) {
+ main {
+   padding: 0 15%;
+   flex-direction: column;
+   order: 1;
+  }
+  .outfit-options {
+    order: 2;
+    width: 100%;
+    margin-top: 11%;
+  }
+  .saved-outfits {
+    order: 3;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  main {
+    padding: 0 0;
+  }
+}
+
+@keyframes hover-transition {
+  from {
+    box-shadow: none;
+  } to {
+    box-shadow: 3px 2px 5px rgba(0, 0, 0, 0.5);
+  }
 }
