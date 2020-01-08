@@ -70,8 +70,6 @@ button {
 
 
 button:enabled:hover {
-  /* background-color: #f29f05;
-  background-color: #B44127; */
   box-shadow: 3px 2px 5px rgba(0, 0, 0, 0.5);
   border: none;
   animation-name: hover-transition;
@@ -109,6 +107,8 @@ button:enabled:hover {
   background-color: #B44127;
   box-shadow: 3px 2px 5px rgba(0, 0, 0, 0.5);
   border: none;
+  animation-name: hover-transition;
+  animation-duration: 0ms;
 }
 
 /* Middle column styling (bear display) */
