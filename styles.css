@@ -219,3 +219,20 @@ button {
 .flex {
   display: flex;
 }
+
+@keyframes cardSlide {
+  0% {
+    transform: translateY(-150%);
+    opacity: 0%;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 100%;
+  }
+}
+
+.card-slide {
+  animation-name: cardSlide;
+  animation-duration: 400ms;
+  animation-timing-function: cubic-bezier(0.02, 1.09, 0.7, 1.03);
+}
