@@ -48,10 +48,10 @@ function resetSearchField(arrayItems) {
 };
 
 function toggleBanner() {
-    var banner = document.querySelector('.no-saved-outfits-banner')
-    if (savedOutfitsContainer.children.length === 0) {
-      banner.classList.remove('hidden');
-    } else if (!banner.classList.contains('hidden')) {
-      banner.classList.add('hidden');
-    }
+  var banner = document.querySelector('.no-saved-outfits-banner')
+  if (savedOutfitsContainer.children.length === 0) {
+    banner.classList.remove('hidden');
+  } else if (!banner.classList.contains('hidden')) {
+    banner.classList.add('hidden');
+  }
 };
