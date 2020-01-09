@@ -27,7 +27,7 @@ label {
   align-self: flex-start;
   font-size: 0.75em;
   margin-bottom: 0.75em;
-  opacity: 50%;
+  opacity: 60%;
 }
 
 .input-wrapper {
@@ -62,7 +62,7 @@ button {
   font-size: 1em;
   border-radius: 3px;
   font-family: overpass;
-  background-color: #401F20;
+  background-color: #C74A25;
   color: white;
   outline: none;
   border: none;
@@ -112,7 +112,7 @@ button:enabled:hover {
 }
 
 .active-item {
-  background-color: #B44127;
+  background-color: #700101;
   box-shadow: 3px 2px 5px rgba(0, 0, 0, 0.5);
   border: none;
   animation-name: hover-transition;
@@ -252,6 +252,10 @@ button:enabled:hover {
 
 .flex {
   display: flex;
+}
+
+::placeholder {
+  opacity: 40%;
 }
 
 @keyframes cardSlide {
