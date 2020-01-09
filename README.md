@@ -25,6 +25,12 @@ This is a single-page application that runs directly from the index.html file. E
 * Using classes and creating objects in a systematic approach, which ultimately supports code readability and application scalability
 * Creating a simple-yet-pleasing UI that utilizes subtle animations, usability optimizations, and considerate design decisions to reinforce user behavior
 
+## Future Considerations
+
+* Saving an array to local storage forces the choice of updating the entire aray when a change is necessary. That's probably not the best performance choice
+* Learning how to use regular expressions will greatly improve our ability to implement accurate search functionality
+* Spending more time pseudo-coding in the beginning will help revent long and complex refactors later down the process
+
 ## Built With
 
 * Vanilla HTML/CSS
@@ -41,6 +47,9 @@ This is a single-page application that runs directly from the index.html file. E
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-## Acknowledgments
+## Instructor Notes
 
-* Shoutout Turing School of Software & Design
+There is one single addition of a global variable that is not a query selector or saved outfits array - it is the instantiation of our newOutfit variable from the Outfit class. This was a purposeful design choice made because of the following considerations:
+
+* Being able to scale functionality to save a "draft" of the currently selected outfit - i.e. when the user selects some outfit items, if the browser had to refresh our unexpectedly quit, we could preserve the state of the bear/outfits loaded. This functionality did not ultimately get implemented, but was understood as a viable goal.
+* Keeping our program aware of DOM changes could allow for greater application scalability if that DOM information became needed before the outfit was manually saved by the user.
