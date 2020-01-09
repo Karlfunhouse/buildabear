@@ -59,7 +59,7 @@ There is one single addition of a global variable that is not a query selector o
 * The main.js file represents the primary connection between the DOM and JS program interface. It contains all global variables, event listeners, and functions called by event listeners.
 * The functions.js file contains all functions not encapsulated within a class, or declared within main.js to be binded to an event listener. The file is ordered alphabetically. 
 * The visual updating of outfit selection is first handled through the displayItem class. When a valid DOM event is triggered,  a displayItem object is instantiated and then routed appropriately via displayItem's methods.
-* The Outfit class ultimately handles all data updating and DOM display. Valid displayItems are passed to their respective Outfit method, which updates the instantiated Outfit's properties and then the respective DOM elements. 
+* The Outfit class ultimately handles all data updating and DOM display. Valid displayItems are passed to their respective Outfit method, which updates the instantiated Outfit's properties and then the necessary DOM elements. 
 * The Outfit class also handles storage of saved outfits.
 
 ## Code Review Accountability
