@@ -1,6 +1,4 @@
-# # Number Guesser!
-
-This project contains a SUPER EXCITING game wherein two players attempt to guess a randomly generated number. The winner gets a much-anticipated results card with a super awesome display of their success.
+# # BUILD A BEAR!
 
 ## Getting Started
 
@@ -15,17 +13,10 @@ None!
 * Vanilla HTML/CSS
 * Vanilla JS
 
-## Contributing
-
-N/A
-
-## Versioning
-
-N/A
-
 ## Authors
 
-* **Jordan Whitten** 
+* **Lane Hunter** 
+* **Karl Nielsen** 
 * **Ryan Bahan**
 
 
