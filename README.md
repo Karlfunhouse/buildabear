@@ -30,6 +30,7 @@ This is a single-page application that runs directly from the index.html file. E
 * Saving an array to local storage forces the choice of updating the entire aray when a change is necessary. That's probably not the best performance choice
 * Learning how to use regular expressions will greatly improve our ability to implement accurate search functionality
 * Spending more time pseudo-coding in the beginning will help revent long and complex refactors later down the process
+* Significantly reducing image size. Most likely implementing dynamic image loading, as opposed to loading all image on page load. The initial consideration was that compressing images down to JPEG medium and loading all of them at page load would stop any latency between clicking a button and dynamically inserting the image. This caused a huge issue with network payload on our dev tools audit, and the tradeoff in latency was definitely not worth the cost. 
 
 ## Built With
 
