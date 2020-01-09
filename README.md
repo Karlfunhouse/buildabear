@@ -2,7 +2,7 @@
 
 Build a Bear might just be the web app you didn't know you needed. Offering nearly limitless room for creativity, users can create custom outfits for their personalized teddy bear, save them for viewing/editing, and enjoy a heartfelt experience like no other.
 
-<img width="1397" alt="Screen Shot 2020-01-08 at 8 03 08 PM" src="https://user-images.githubusercontent.com/54119863/72034600-ba264a00-3252-11ea-9224-2220b2b25388.png">
+<img width="1399" alt="Screen Shot 2020-01-08 at 10 46 35 PM" src="https://user-images.githubusercontent.com/54119863/72041434-cb7a5100-3268-11ea-9b27-7587cc15bdbe.png">
 
 ## Getting Started
 
