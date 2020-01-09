@@ -1,9 +1,9 @@
 class DisplayItem {
   constructor (item) {
-   this.id = item.target.value;
-   this.type = item.target.classList[0];
-   this.imageId = document.getElementById(`${item.target.value}`);
-   this.buttonId = item.target;
+    this.id = item.target.value;
+    this.type = item.target.classList[0];
+    this.imageId = document.getElementById(`${item.target.value}`);
+    this.buttonId = item.target;
   }
 
   // Sort backgrounds from garments, initiating the control flow for
