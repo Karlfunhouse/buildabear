@@ -53,3 +53,10 @@ There is one single addition of a global variable that is not a query selector o
 
 * Being able to scale functionality to save a "draft" of the currently selected outfit - i.e. when the user selects some outfit items, if the browser had to refresh our unexpectedly quit, we could preserve the state of the bear/outfits loaded. This functionality did not ultimately get implemented, but was understood as a viable goal.
 * Keeping our program aware of DOM changes could allow for greater application scalability if that DOM information became needed before the outfit was manually saved by the user.
+
+## Code Review Accountability
+
+We got our code review from Ryan's mod2 mentor, Joel:
+
+<img width="895" alt="Screen Shot 2020-01-08 at 6 05 21 PM" src="https://user-images.githubusercontent.com/54119863/72036762-18562b80-3259-11ea-8164-5032def1bc35.png">
+
