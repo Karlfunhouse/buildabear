@@ -1,5 +1,5 @@
 # DTR: Define the Relationship 
-#### *(Karl Nielsen, Lane Hunter, Ryan Bayhan)*
+#### *(Karl Nielsen, Lane Hunter, Ryan Bahan)*
 
 ### Guiding Questions to Define The Relationship:
 
