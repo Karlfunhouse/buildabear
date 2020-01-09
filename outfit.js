@@ -1,53 +1,50 @@
 class Outfit {
- constructor (id, title, garments, background) {
+  constructor (id, title, garments, background) {
   this.id = id;
   this.title = title;
   this.garments = garments;
   this.background = background;
- }
+  };
 
- addGarment(garment) {
-  this.garments.push(garment);
-  garment.imageId.classList.remove('hidden');
-  garment.buttonId.classList.add('active-item');
- }
+  addGarment(garment) {
+    this.garments.push(garment);
+    garment.imageId.classList.remove('hidden');
+    garment.buttonId.classList.add('active-item');
+  };
 
- removeGarment(garment) {
-  var removedItem = this.garments.find(item => item.type === garment.type);
-  this.garments = this.garments.filter(item => item.id != removedItem.id);
-  garment.imageId.classList.add('hidden');
-  garment.buttonId.classList.remove('active-item');
- }
+  removeGarment(garment) {
+    var removedItem = this.garments.find(item => item.type === garment.type);
+    this.garments = this.garments.filter(item => item.id != removedItem.id);
+    garment.imageId.classList.add('hidden');
+    garment.buttonId.classList.remove('active-item');
+  };
 
- addBackground(background) {
-  this.background = background;
-  background.imageId.classList.remove('hidden');
-  background.buttonId.classList.add('active-item');
- }
+  addBackground(background) {
+    this.background = background;
+    background.imageId.classList.remove('hidden');
+    background.buttonId.classList.add('active-item');
+  };
 
- removeBackground() {
-  this.background.buttonId.classList.remove('active-item');
-  this.background.imageId.classList.add('hidden');
-  this.background = null;
- }
+  removeBackground() {
+    this.background.buttonId.classList.remove('active-item');
+    this.background.imageId.classList.add('hidden');
+    this.background = null;
+  };
 
- update(outfit) {
+  update(outfit) {
     this.getDOMElements(outfit);
-
     this.id = outfit.id;
     this.title = outfit.title;
     this.garments = outfit.garments;
     this.background = outfit.background;
-
     this.garments.forEach(garment => this.addGarment(garment));
     document.querySelector('.outfit-name-input-js').value = `${this.title}`;
-
     if (outfit.background !== null) {
-        this.addBackground(outfit.background);
+      this.addBackground(outfit.background);
     }
- }
+  };
 
-getDOMElements(outfit) {
+  getDOMElements(outfit) {
     outfit.garments.forEach(item => item.buttonId = document.querySelector(`button[value=${item.id}]`));
     outfit.garments.forEach(item => item.imageId = document.getElementById(`${item.id}`));
 
@@ -55,9 +52,9 @@ getDOMElements(outfit) {
       outfit.background.imageId = document.getElementById(`${outfit.background.id}`);
       outfit.background.buttonId = document.querySelector(`button[value=${outfit.background.id}]`);
     }
-  }
-  
-reset() {
+  };
+    
+  reset() {
     newOutfit = new Outfit(Date.now(), null, [], null);
     var images = document.querySelectorAll('.image-absolute');
     var activeButtons = document.querySelectorAll('.active-item');
@@ -65,28 +62,28 @@ reset() {
     activeButtons.forEach(button => button.classList.remove('active-item'));
     saveForm.reset();
     checkFormValidity();
-  }
+  };
 
-store() {
+  store() {
     this.title = document.querySelector('.outfit-name-input-js').value;
     if (savedOutfits.find(outfit => outfit.title === this.title) === undefined) {
         this.storeNewOutfit();
     } else {
         this.updateStoredOutfit();
     }
-  }
+  };
 
-storeNewOutfit() {
+  storeNewOutfit() {
     this.id = Date.now();
     savedOutfits.push(this);
     displayNewOutfitCard();
     window.localStorage.setItem('outfits', JSON.stringify(savedOutfits));
-  }
+  };
 
-updateStoredOutfit() {
+  updateStoredOutfit() {
     var outfitIndex = savedOutfits.findIndex(outfit => outfit.title === this.title);
     savedOutfits.splice(outfitIndex, 1);
     savedOutfits.push(this);
     window.localStorage.setItem('outfits', JSON.stringify(savedOutfits));
-  }
+  };
 }
