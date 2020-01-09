@@ -56,6 +56,7 @@ getDOMElements(outfit) {
       outfit.background.buttonId = document.querySelector(`button[value=${outfit.background.id}]`);
     }
   }
+  
 reset() {
     newOutfit = new Outfit(Date.now(), null, [], null);
     var images = document.querySelectorAll('.image-absolute');
@@ -65,6 +66,7 @@ reset() {
     saveForm.reset();
     checkFormValidity();
   }
+
 store() {
     this.title = document.querySelector('.outfit-name-input-js').value;
     if (savedOutfits.find(outfit => outfit.title === this.title) === undefined) {
@@ -73,15 +75,17 @@ store() {
         this.updateStoredOutfit();
     }
   }
+
 storeNewOutfit() {
     this.id = Date.now();
     savedOutfits.push(this);
     displayNewOutfitCard();
     window.localStorage.setItem('outfits', JSON.stringify(savedOutfits));
   }
+
 updateStoredOutfit() {
-    var outfit = savedOutfits.findIndex(outfit => outfit.title === this.title);
-    savedOutfits.splice(outfit, 1);
+    var outfitIndex = savedOutfits.findIndex(outfit => outfit.title === this.title);
+    savedOutfits.splice(outfitIndex, 1);
     savedOutfits.push(this);
     window.localStorage.setItem('outfits', JSON.stringify(savedOutfits));
   }

@@ -1,11 +1,11 @@
 var newOutfit = new Outfit(Date.now(), null, [], null);
 var buttonColumn = document.querySelector('.outfit-options-js');
+var outfitSearchField = document.querySelector('#outfit-search');
 var saveForm = document.querySelector('.save-outfit-form-js');
 var saveButton = document.querySelector('.save-outfit-button-js');
 var savedOutfitsColumn = document.querySelector('.saved-outfits-js')
 var savedOutfitsContainer = document.querySelector('.saved-outfits-container-js');
 var savedOutfits = [];
-var outfitSearchField = document.querySelector('#outfit-search');
 
 buttonColumn.addEventListener('click', getItem);
 saveForm.addEventListener('input', checkFormValidity);
@@ -17,22 +17,6 @@ outfitSearchField.addEventListener('input', searchOutfit);
 getOutfitsFromStorage();
 displayLoadedOutfitCards();
 toggleBanner();
-
-function toggleBanner() {
-  var banner = document.querySelector('.no-saved-outfits-banner')
-  if (savedOutfitsContainer.children.length === 0) {
-    banner.classList.remove('hidden');
-  } else if (!banner.classList.contains('hidden')) {
-    banner.classList.add('hidden');
-  }
-}
-
-function closeBanner() {
-  var banner = document.querySelector('.no-saved-outfits-banner')
-  if (event.target.classList.contains('no-outfit-close')) {
-    banner.classList.add('hidden');
-  }
-}
 
 function getItem(event) {
   if (event.target.localName === 'button') {
@@ -54,51 +38,10 @@ function submitForm(event) {
   toggleBanner();
 }
 
-function searchOutfit() {
-  var savedOutfitCards = Array.prototype.slice.call(
-    document.querySelectorAll('.saved-outfit-card'));
-
-  console.log(savedOutfitCards);
-
-  var inputVal = outfitSearchField.value;
-  var matches = findMatches(inputVal, savedOutfitCards);
-
-  savedOutfitCards.forEach(card => card.classList.remove('flex'))
-  savedOutfitCards.forEach(card => card.classList.add('hidden'))
-
-  matches.forEach(card => card.classList.add('flex'))
-  matches.forEach(card => card.classList.remove('hidden'))
-
-  if (outfitSearchField.value.length === 0) {
-    savedOutfitCards.forEach(card => card.classList.add('flex'))
-    savedOutfitCards.forEach(card => card.classList.remove('hidden'))
-  }
-}
-
-function findMatches(searchVal, cardsArray) {
-  return cardsArray.filter(item => item.innerText.startsWith(`${searchVal}`));
-}
-
-function displayNewOutfitCard() {
-  savedOutfitsContainer.insertAdjacentHTML('beforeend',
-  `<div class="saved-outfit-card flex card-slide" data-id="${newOutfit.id}">
-    <p data-id="${newOutfit.id}">${newOutfit.title}</p>
-    <i class="fas fa-times"></i>
-  </div>`);
-}
-
-function displayLoadedOutfitCards() {
-  savedOutfits.forEach(outfit => savedOutfitsContainer.insertAdjacentHTML('beforeend',
-  `<div class="saved-outfit-card flex card-slide" data-id="${outfit.id}">
-    <p data-id="${outfit.id}">${outfit.title}</p>
-    <i class="fas fa-times"></i>
-  </div>`));
-}
-
-function getOutfitsFromStorage() {
-  var outfitKey = JSON.parse(localStorage.getItem('outfits'));
-  if (outfitKey !== null) {
-    outfitKey.forEach(outfit => savedOutfits.push(outfit));
+function closeBanner() {
+  var banner = document.querySelector('.no-saved-outfits-banner')
+  if (event.target.classList.contains('no-outfit-close')) {
+    banner.classList.add('hidden');
   }
 }
 
@@ -110,19 +53,17 @@ function updateCardSection() {
   }
 }
 
-function removeSavedCard() {
-    var outfitCard = event.target.parentNode;
-    event.target.parentNode.parentNode.removeChild(event.target.parentNode);
-    savedOutfits = savedOutfits.filter(outfit => outfit.id.toString() !== outfitCard.dataset.id);
-    window.localStorage.setItem('outfits', JSON.stringify(savedOutfits));
-}
+function searchOutfit() {
+  var savedOutfitCards = Array.prototype.slice.call(
+    document.querySelectorAll('.saved-outfit-card'));
 
-function loadOutfitFromCard() {
-    newOutfit.reset();
+  var inputVal = outfitSearchField.value;
+  var matches = findMatches(inputVal, savedOutfitCards);
 
-    var loadedOutfit = savedOutfits.find
-    (item => item.id.toString() === event.target.dataset.id);
+  savedOutfitCards.forEach(card => card.classList.remove('flex'))
+  savedOutfitCards.forEach(card => card.classList.add('hidden'))
 
-    newOutfit.update(loadedOutfit);
-    checkFormValidity();
+  matches.forEach(card => card.classList.add('flex'))
+  matches.forEach(card => card.classList.remove('hidden'))
+  resetSearchField(savedOutfitCards);
 }
