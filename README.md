@@ -54,6 +54,14 @@ There is one single addition of a global variable that is not a query selector o
 * Being able to scale functionality to save a "draft" of the currently selected outfit - i.e. when the user selects some outfit items, if the browser had to refresh our unexpectedly quit, we could preserve the state of the bear/outfits loaded. This functionality did not ultimately get implemented, but was understood as a viable goal.
 * Keeping our program aware of DOM changes could allow for greater application scalability if that DOM information became needed before the outfit was manually saved by the user.
 
+## Developer notes
+
+* The main.js file represents the primary connection between the DOM and JS program interface. It contains all global variables, event listeners, and functions called by event listeners.
+* The functions.js file contains all functions not encapsulated within a class, or declared within main.js to be binded to an event listener. The file is ordered alphabetically. 
+* The visual updating of outfit selection is first handled through the displayItem class. When a valid DOM event is triggered,  a displayItem object is instantiated and then routed appropriately via displayItem's methods.
+* The Outfit class ultimately handles all data updating and DOM display. Valid displayItems are passed to their respective Outfit method, which updates the instantiated Outfit's properties and then the respective DOM elements. 
+* The Outfit class also handles storage of saved outfits.
+
 ## Code Review Accountability
 
 We got our code review from Ryan's mod2 mentor, Joel:
