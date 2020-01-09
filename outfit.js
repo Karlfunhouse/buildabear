@@ -53,7 +53,7 @@ class Outfit {
       outfit.background.buttonId = document.querySelector(`button[value=${outfit.background.id}]`);
     }
   };
-    
+
   reset() {
     newOutfit = new Outfit(Date.now(), null, [], null);
     var images = document.querySelectorAll('.image-absolute');
@@ -67,9 +67,9 @@ class Outfit {
   store() {
     this.title = document.querySelector('.outfit-name-input-js').value;
     if (savedOutfits.find(outfit => outfit.title === this.title) === undefined) {
-        this.storeNewOutfit();
+      this.storeNewOutfit();
     } else {
-        this.updateStoredOutfit();
+      this.updateStoredOutfit();
     }
   };
 
