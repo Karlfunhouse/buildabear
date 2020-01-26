@@ -39,7 +39,7 @@ This is a single-page application that runs directly from the index.html file. E
 
 ## Authors
 
-* **[Lane Hunter](https://github.com/jonthanny)** 
+* **[Lane Hunter](https://github.com/lanehunter-dev)** 
 * **[Karl Nielsen](https://github.com/karlfunhouse)** 
 * **[Ryan Bahan](https://github.com/ryanbahan)**
 
